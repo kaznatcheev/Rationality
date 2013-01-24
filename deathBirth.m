@@ -1,4 +1,4 @@
-function [genotypesNew, minds] = deathBirth( adjmx, ...
+function [genotypesNew, dead] = deathBirth( adjmx, ...
     genotypesOld, w, fitnesses, pmod, reproduce)
 %deathBirth(adjmx,genotypes,w,fitnesses,pmod,reproduce)
 %   does deathBirth updating on (genotypes) with (fitnesses) given
@@ -7,9 +7,14 @@ function [genotypesNew, minds] = deathBirth( adjmx, ...
 
 genotypesNew = genotypesOld;
 
-
 r = randperm(length(genotypesOld));
-n_killed = floor(length(genotypesOld)*pmod);
+
+if isempty(pmod),
+    n_killed = 1;
+else
+    n_killed = floor(length(genotypesOld)*pmod);
+end;
+
 dead = r(1:n_killed);
 num_list = 1:length(genotypesOld);
 
@@ -24,11 +29,10 @@ for i = 1:n_killed
         	genotypesNew(dead(i),:) = reproduce([]);
         else,
         	genotypesNew(dead(i),:) = reproduce(genotypesOld(choices(1),:));
-	end;
+        end;
     else,
         genotypesNew(dead(i),:) = reproduce([]);
     end;
-    minds(dead(i)) = zeros(1,4); %clear the newborn's mind
 end
 
 
