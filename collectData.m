@@ -25,12 +25,12 @@ function [data] = collectData(genotypes, minds)
 
 avg_u = sum(genotype(:, 1)) / length(genotype(:, 1));
 avg_v = sum(genotype(:, 2)) / length(genotype(:, 2));
-std_u = sqrt(sum(genotype(:, 1).^2) / length(genotype(:, 1)));
-std_v = sqrt(sum(genotype(:, 2).^2) / length(genotype(:, 2)));
+std_u = std(genotype(:, 1));
+std_v = std(genotype(:, 2));
 avg_p = sum(p) / length(p);
 avg_q = sum(q) / length(q);
-std_p = sqrt(sum(p.^2) / length(p));
-std_q = sqrt(sum(q.^2) / length(q));
+std_p = std(p);
+std_q = std(q);
 
 data = [avg_u, avg_v, std_u, std_v, avg_p, avg_q, std_p, std_q];
 end
