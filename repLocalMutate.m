@@ -4,8 +4,8 @@ function genotype_new = repLocalMutate(genotype_old, mutation_rate, mutation_siz
 %   genotype_old - 1 x 2 vector where [1] is the  agent's U value and
 %       [2] is its V value
 %   mutation_rate - the probability that the agent experiences a mutation
-%   mutation_size - the size of mutation "step" the agent took, if any
-%   boundaries - 1 x 4 vector sets the boundaries for U and V, where
+%   mutation_size - the maximum size of a mutation "step"
+%   boundaries - 1 x 4 vector that sets the boundaries for U and V, where
 %       [1] is minimum value of U
 %       [2] is the maximum value of U
 %       [3] is the minimum value of V
