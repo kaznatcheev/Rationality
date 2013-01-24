@@ -40,7 +40,7 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %   genotypes - the (genotypes) at the last timestep
 %   minds - the (minds) at the last timestep
 
-data = zeros(max_epochs, 11);
+data = zeros(max_epoch, 11);
 edge_list = adjmx2edge_list(adjmx);
 
 for epoch = 1:max_epoch 

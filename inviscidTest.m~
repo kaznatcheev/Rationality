@@ -1,0 +1,3 @@
+for n = 1:10
+    [data, genotypes, minds] = inviscidRun
+end
