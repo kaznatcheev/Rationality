@@ -4,8 +4,8 @@ function [p,q] = mind2pq(mind)
 %       p - expected probability of cooperation if he cooperates
 %       q - expected probability of defection if he defects
 
-p = (mind(1) + 1)/(mind(1) + mind(2) + 1);
-q = (mind(3) + 1)/(mind(3) + mind(4) + 1);
+p = (mind(1) + 1)/(mind(1) + mind(2) + 2);
+q = (mind(3) + 1)/(mind(3) + mind(4) + 2);
 
 end
 
