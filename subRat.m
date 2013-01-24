@@ -1,5 +1,5 @@
 function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
-    game, w, updateRule, max_epoch, pmod, reproduce)
+    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule)
 %[data, genotypes, minds] = subRat (adjmx, genotypes, minds, game, w, ...
 %   updateRule, max_epoch, pmod, reproduce)
 %input:
@@ -21,6 +21,9 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %   pmod - percent modified in the update rule
 %   reproduce - a function (genotypes --> genotypes) that specifies how a
 %       child is created
+%   decisionRule - a function (genotype,mind --> strategy) that lets the
+%       agent decide if they want too cooperate or defect based on their
+%       genotype and mind
 %output:
 %   data - max_epoch x 11 matrix where (at timestep t)
 %       [t, 1] is the number of mutual cooperations
@@ -42,7 +45,7 @@ edge_list = adjmx2edge_list(adjmx);
 interactions = zeros(3, 1);
 
 for epoch = 1:max_epoch 
-    [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game);
+    [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule);
     [genotypes, minds] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
     data(epoch, 1:3) = interactions;
     data(epoch, 4:11) = collectData(genotypes, minds);
