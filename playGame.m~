@@ -1,13 +1,16 @@
-function [minds, fitnesses] = playGame(adjmx, genotypes, minds, game)
+function [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game)
 %playGame(adjmx, genotypes, minds, base_fitnesses, game)
 %	Agents given by (genotypes,minds) populate the vertices of the graphs given by (adjmx) and
 %	play (game) between each other to determine (fitnesses) and update (minds).
 fitnesses = zeros(length(genotypes),1);
-for i = 1:length(genotypes)
-    for j=i:length(genotypes)
-        if adjmx(i,j),
-            %this is where the interaction goes
-            end
-        end
-    end
-end
+n_edges = length(edge_list);
+
+edge_list = edge_list(randperm(n_edges),:); %permute the order of interactions
+
+for i = 1:n_edges,
+    agent1 = edge_list(i,1);
+    agent2 = edge_list(i,2);
+    agent1_p;
+    agent1_q;
+    agent1_util_C = minds(agent1,1)
+end;
