@@ -19,7 +19,7 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %     specifies how agents are modified
 %   max_epoch - number of iterations of the simulation
 %   pmod - percent modified in the update rule
-%   reproduce - a function (genotypes --> genotypes) that specifies how a
+%   reproduce - a function (genotype --> genotype) that specifies how a
 %       child is created
 %   decisionRule - a function (genotype,mind --> strategy) that lets the
 %       agent decide if they want too cooperate or defect based on their
@@ -46,7 +46,8 @@ interactions = zeros(3, 1);
 
 for epoch = 1:max_epoch 
     [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule);
-    [genotypes, minds] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
+    [genotypes, change_list] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
+    minds(change_list,:) = zeros(length(change_list),4); %clear the minds of newborns
     data(epoch, 1:3) = interactions;
     data(epoch, 4:11) = collectData(genotypes, minds);
 end
