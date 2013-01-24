@@ -6,17 +6,24 @@ function [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds
 %   agent will cooperate or defect.
 fitnesses = zeros(length(genotypes),1);
 n_edges = length(edge_list);
+interactions = zeros(3,1);
 
 edge_list = edge_list(randperm(n_edges),:); %permute the order of interactions
 
-for i = 1:n_edges,
+for i = 1:n_edges, %play along each edge
     a1 = edge_list(i,1);
-    [a1_p, a1_q] = mind2pq(minds(a1,:));
-    a1_util_C = a1_p + genotypes(a1,1)*(1 - a1_p);
-    a1_util_D = a1_q*genotypes(a1,2);
-    
     a2 = edge_list(i,2);
-    [a2_p, a2_q] = mind2pq(minds(a2,:));
-    a2_util_C = a2_p + genotypes(a2,1)*(1 - a2_p);
-    a2_util_D = a2_q*genotypes(a2,2);
+    
+    %make the decisions and record
+    a1_decision = decisionRule(genotypes(a1,:),minds(a1,:));
+    a2_decision = decisionRule(genotypes(a2,:),minds(a2,:));
+    interactions(a1_decision + a2_decision - 1) = interactions(a1_decision + a2_decision - 1) + 1;
+    
+    %give fitness rewards
+    fitnesses(a1) = fitnesses(a1) + game(a1_decision,a2_decision);
+    fitnesses(a2) = fitnesses(a2) + game(a2_decision,a1_decision);
+    
+    %update brains
+    minds(a1,(a1_decision - 1)*2 + a2_decision) = minds(a1,(a1_decision - 1)*2 + a2_decision) + 1;
+    minds(a2,(a2_decision - 1)*2 + a1_decision) = minds(a2,(a2_decision - 1)*2 + a1_decision) + 1;
 end;
