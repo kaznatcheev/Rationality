@@ -23,10 +23,10 @@ function [data] = collectData(genotypes, minds)
 
 [p,q] = cellfun(@mind2pq, num2cell(minds, 2));
 
-avg_u = sum(genotype(:, 1)) / length(genotype(:, 1));
-avg_v = sum(genotype(:, 2)) / length(genotype(:, 2));
-std_u = std(genotype(:, 1));
-std_v = std(genotype(:, 2));
+avg_u = sum(genotypes(:, 1)) / length(genotypes(:, 1));
+avg_v = sum(genotypes(:, 2)) / length(genotypes(:, 2));
+std_u = std(genotypes(:, 1));
+std_v = std(genotypes(:, 2));
 avg_p = sum(p) / length(p);
 avg_q = sum(q) / length(q);
 std_p = std(p);

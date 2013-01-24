@@ -15,7 +15,7 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %       [i, 4] is the number of defections seen when the ith agent defected
 %   game - 2 x 2 matrix that represents the game (payoff matrix)
 %   w  - selection strength
-%   updateRule - a function (adjmx, genotypes, w, fitness, pmod, reproduce --> genotypes, minds) that
+%   updateRule - a function (adjmx, genotypes, w, fitness, pmod, reproduce --> genotypes, dead) that
 %     specifies how agents are modified
 %   max_epoch - number of iterations of the simulation
 %   pmod - percent modified in the update rule
@@ -42,7 +42,6 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 
 data = zeros(max_epochs, 11);
 edge_list = adjmx2edge_list(adjmx);
-interactions = zeros(3, 1);
 
 for epoch = 1:max_epoch 
     [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule);
