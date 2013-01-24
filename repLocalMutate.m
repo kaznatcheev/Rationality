@@ -11,6 +11,11 @@ function genotype_new = repLocalMutate(genotype_old, mutation_rate, mutation_siz
 %       [3] is the minimum value of V
 %       [4] is the maximum value of V
 
+if isempty(genotype_old)
+    genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
+        rand*(boundaries(4) - boundaries(3)) + boundaries(3)];
+end;
+
 genotype_new = genotype_old;
 
 if rand() < mutation_rate
