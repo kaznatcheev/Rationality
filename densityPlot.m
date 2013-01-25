@@ -17,7 +17,7 @@ C = {xi, yi};
 
 z = hist3(data,C);
 pcolor(xi,yi,z);
-caxis([0 0.5*length(data)]);
+caxis([0 length(data)]);
 colormap(flipud(gray));
 shading interp;
 

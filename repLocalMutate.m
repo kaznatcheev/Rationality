@@ -23,7 +23,7 @@ if rand() < mutation_rate
         genotype_new(i) = genotype_new(i) + (rand() * mutation_size * 2) - mutation_size;
     end
     
-    if (nargin == 5) && ~isempty(boundaries)
+    if (nargin == 4) && ~isempty(boundaries)
         genotype_new(1) = min(max(genotype_new(1), boundaries(1)), boundaries(2));
         genotype_new(2) = min(max(genotype_new(2), boundaries(3)), boundaries(4));
     end
