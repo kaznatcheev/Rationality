@@ -35,7 +35,7 @@ if (nargin >= 3) && ~isempty(game_point),
         'MarkerSize',15);
 end;
 
-%hold off;
+hold off;
 
 end
 
