@@ -1,6 +1,10 @@
 %Run both simulations.
-%[d_i,g_i,m_i] = inviscidRun(20, 200, 10, 0.5, [1, -0.01 ; 1.01, 0]);
-%[d_rr,g_rr,m_rr] = regRandRun(100, 200, 10, [], 10, [1, -0.01 ; 1.01, 0]);
+tic;
+[d_i,g_i,m_i] = inviscidRun(100, 500, 10, [], 10, [1, -0.01 ; 1.01, 0]);
+toc
+tic;
+[d_rr,g_rr,m_rr] = regRandRun(100, 500, 10, [], 10, [1, -0.01 ; 1.01, 0]);
+toc
 
 %Calculate the proportion of interactions that are cooperations.
 prop_coop_i = (2*d_i(:,1) + d_i(:,2))./(2*(d_i(:,1) + d_i(:,2) + d_i(:,3)));
@@ -17,12 +21,12 @@ for i = 1:11
     subplot(1,2,1);
     hist3(g_i(:,:,i));
     set(get(gca,'child'),'FaceColor','interp','CDataMode','auto');
-    %axis([-2, 2, -1, 3, 0, 100]);
+    axis([-2, 2, -1, 3, 0, 50]);
     
     subplot(1,2,2);
     hist3(g_rr(:,:,i));
     set(get(gca,'child'),'FaceColor','interp','CDataMode','auto');
-    %axis([-2, 2, -1, 3, 0, 100]);
+    axis([-2, 2, -1, 3, 0, 50]);
 end
 
 %Plot the genotypes as bar graphs, according to which game the agents are

@@ -1,5 +1,5 @@
 function [data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds, ...
-    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, n_runs)
+    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, p_shuffle, n_runs)
 %[data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds,
 %   game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, n_runs) 
 %   
@@ -9,7 +9,7 @@ function [data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, mind
 %   genotypes and minds between each run. Thus, the total number of
 %   timesteps is (n_runs)*(max_epoch).
 
-if (nargin < 11) || isempty(n_runs),
+if (nargin < 12) || isempty(n_runs),
     n_runs = 1;
 end;
 
@@ -25,7 +25,7 @@ for i = 1:n_runs,
     [data(((i - 1)*max_epoch + 1):i*max_epoch,:), ...
         many_genotypes(:,:,i + 1), many_minds(:,:,i + 1)] = ...
         subRat(adjmx, many_genotypes(:,:,i), many_minds(:,:,i), game, ...
-        w, updateRule, max_epoch, pmod, reproduce, decisionRule);
+        w, updateRule, max_epoch, pmod, reproduce, decisionRule, p_shuffle);
 end;
 
 end
