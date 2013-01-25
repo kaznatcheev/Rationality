@@ -50,13 +50,14 @@ edge_list = adjmx2edge_list(adjmx);
 
 for epoch = 1:max_epoch 
     [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule);
-    [genotypes, change_list] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
-    minds(change_list,:) = zeros(length(change_list),4); %clear the minds of newborns
     if (rand < p_shuffle),
         new_world_order = randperm(size(genotypes,1));
         genotypes = genotypes(new_world_order,:);
         minds = minds(new_world_order,:);
+        fitnesses = fitnesses(new_world_order);
     end;
+    [genotypes, change_list] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
+    minds(change_list,:) = zeros(length(change_list),4); %clear the minds of newborns
     data(epoch, 1:3) = interactions;
     data(epoch, 4:11) = collectData(genotypes, minds);
 end

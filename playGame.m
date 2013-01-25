@@ -4,8 +4,8 @@ function [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds
 %	play (game) between each other to determine (fitnesses) and update (minds).
 %   (decision) is a function (genotype,mind --> strat) that decides if the
 %   agent will cooperate or defect.
-fitnesses = zeros(length(genotypes),1);
-n_edges = length(edge_list);
+fitnesses = zeros(size(genotypes,1),1);
+n_edges = size(edge_list,1);
 interactions = zeros(3,1);
 
 edge_list = edge_list(randperm(n_edges),:); %permute the order of interactions
