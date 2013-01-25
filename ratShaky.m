@@ -20,5 +20,11 @@ else
 end;
         
 
+%check shaky hand
+if (rand < epsilon)
+    decision = 3 - decision;
+end;
+
+
 end
 

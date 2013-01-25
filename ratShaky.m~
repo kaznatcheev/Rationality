@@ -7,9 +7,24 @@ function decision = ratShaky(genotype,mind,epsilon)
 %agent uses genotype to calculate the rational strategy and then follows it
 %doing the opposite with probability (epsilon).
 
-if (genotype(1) <= 0) && (genotype(2) >= 1),
-    decision = 2,
-else if (genoty
+U = genotype(1);
+V = genotype(2);
+
+if (U <= 0) && (V >= 1),
+    decision = 2;
+elseif (U >= 0) && (V <= 1),
+    decision = 1;
+else
+    p = U/(U + V - 1);
+    decision = 1 + (rand > p);
+end;
+        
+
+%check shaky hand
+if (rand < epsilon)
+    decision = mod(decision)
+end;
+
 
 end
 
