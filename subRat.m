@@ -1,5 +1,6 @@
 function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
-    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule)
+    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, ...
+    p_shuffle)
 %[data, genotypes, minds] = subRat (adjmx, genotypes, minds, game, w, ...
 %   updateRule, max_epoch, pmod, reproduce)
 %input:
@@ -40,6 +41,10 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %   genotypes - the (genotypes) at the last timestep
 %   minds - the (minds) at the last timestep
 
+if (nargin < 11) || isempty(p_shuffle),
+    p_shuffle = 0;
+end;
+
 data = zeros(max_epoch, 11);
 edge_list = adjmx2edge_list(adjmx);
 
@@ -47,6 +52,11 @@ for epoch = 1:max_epoch
     [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule);
     [genotypes, change_list] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
     minds(change_list,:) = zeros(length(change_list),4); %clear the minds of newborns
+    if (rand < p_shuffle),
+        new_world_order = randperm(size(genotypes,1));
+        genotypes = genotypes(new_world_order,:);
+        minds = minds(new_world_order,:);
+    end;
     data(epoch, 1:3) = interactions;
     data(epoch, 4:11) = collectData(genotypes, minds);
 end
