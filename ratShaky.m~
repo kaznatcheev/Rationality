@@ -1,0 +1,15 @@
+function decision = ratShaky(genotype,mind,epsilon)
+%decision = ratShaky
+%   genotype(1) - U value of game agent percieves
+%   genotype(2) - V value of game agent percieves
+%   mind - 1x4 vector representing agent's mind
+%   epsilon - shakiness parameter
+%agent uses genotype to calculate the rational strategy and then follows it
+%doing the opposite with probability (epsilon).
+
+if (genotype(1) <= 0) && (genotype(2) >= 1),
+    decision = 2,
+else if (genoty
+
+end
+
