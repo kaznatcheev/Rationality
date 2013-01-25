@@ -1,11 +1,21 @@
 function [data, genotypes, minds] = inviscidRun(n_agents, n_epochs, ...
-    pmod, game, epsilon, mutation_rate, mutation_size, boundaries)
+    n_runs, pmod, game, epsilon, mutation_rate, mutation_size, boundaries)
 %[data, genotypes, minds] = inviscidRun(n_agents, n_epochs, pmod, game, ...
 %   epsilon, mutation_rate, mutation_size, boundaries)
 %input:
 %   n_agents - number of agents
 %   n_epochs - number of epochs
+%   n_runs
 %   pmod - percent modified in the update rule
+%   game - 2 x 2 matrix that represents the game (payoff matrix)
+%   epsilon - the chance that an agent will shake its hand
+%   mutation_rate - the chance that an agent will mutate when reproducing
+%   mutation_size - the maximum size of a mutation "step"
+%   boundaries - 1 x 4 vector that sets the boundaries for U and V, where
+%       [1] is minimum value of U
+%       [2] is the maximum value of U
+%       [3] is the minimum value of V
+%       [4] is the maximum value of V
 
 if (nargin < 8) || isempty(boundaries),
     boundaries = [-2, 2, -2, 2];

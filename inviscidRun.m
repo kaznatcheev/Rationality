@@ -1,10 +1,11 @@
-function [data, genotypes, minds] = inviscidRun(n_agents, n_epochs, ...
-    pmod, game, epsilon, mutation_rate, mutation_size, boundaries)
+function [data, many_genotypes, many_minds] = inviscidRun(n_agents, n_epochs, ...
+    n_runs, pmod, game, epsilon, mutation_rate, mutation_size, boundaries)
 %[data, genotypes, minds] = inviscidRun(n_agents, n_epochs, pmod, game, ...
 %   epsilon, mutation_rate, mutation_size, boundaries)
 %input:
 %   n_agents - number of agents
-%   n_epochs - number of epochs
+%   n_epochs - number of epochs per run
+%   n_runs - number of continuous runs
 %   pmod - percent modified in the update rule
 %   game - 2 x 2 matrix that represents the game (payoff matrix)
 %   epsilon - the chance that an agent will shake its hand
@@ -16,23 +17,23 @@ function [data, genotypes, minds] = inviscidRun(n_agents, n_epochs, ...
 %       [3] is the minimum value of V
 %       [4] is the maximum value of V
 
-if (nargin < 8) || isempty(boundaries),
-    boundaries = [-2, 2, -2, 2];
+if (nargin < 9) || isempty(boundaries),
+    boundaries = [-2, 2, -1, 3];
 end;
 
-if (nargin < 7) || isempty(mutation_size),
+if (nargin < 8) || isempty(mutation_size),
     mutation_size = 0.2;
 end;
 
-if (nargin < 6) || isempty(mutation_rate),
+if (nargin < 7) || isempty(mutation_rate),
     mutation_rate = 0.05;
 end;
 
-if (nargin < 5) || isempty(epsilon),
+if (nargin < 6) || isempty(epsilon),
     epsilon = 0.05;
 end;
 
-if (nargin < 4) || isempty(game),
+if (nargin < 5) || isempty(game),
     game = [1, -1 ; 2, 0];
 end;
 
@@ -43,9 +44,9 @@ genotypes(:, 2) = genotypes(:, 2) .* (boundaries(4) - boundaries(3)) + boundarie
 
 minds = zeros(n_agents, 4);
 
-[data, genotypes, minds] = subRat(adjmx, genotypes, minds, game, [], ...
+[data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds, game, [], ...
     @deathBirth, n_epochs, pmod, ...
     @(genotype) repLocalMutate(genotype, mutation_rate, mutation_size, boundaries), ...
-    @(genotype, mind) ratBayShaky(genotype, mind, epsilon));
+    @(genotype, mind) ratBayShaky(genotype, mind, epsilon), n_runs);
 end
 
