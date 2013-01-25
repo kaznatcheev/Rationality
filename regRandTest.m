@@ -3,7 +3,7 @@
 prop_coop = (2*d(:,1) + d(:,2))./(2*(d(:,1) + d(:,2) + d(:,3)));
 plot(prop_coop);
 
-for i = 1:10
+for i = 1:11
     figure;
     hist3(g(:,:,i));
 end
