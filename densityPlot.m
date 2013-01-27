@@ -1,6 +1,10 @@
-function densityPlot(data, boundaries, game_point, n_bins)
-%densityPlot(data, boundaries, n_bins)
+function densityPlot(data, boundaries, game_point, n_bins, c_bar)
+%densityPlot(data, boundaries, game_point, n_bins)
 %
+
+if (nargin < 5) || isempty(c_bar),
+    c_bar = 0;
+end;
 
 if (nargin < 4) || isempty(n_bins),
     n_bins = floor(sqrt(length(data)));
@@ -16,8 +20,12 @@ yi = linspace(boundaries(3), boundaries(4), n_bins);
 C = {xi, yi};
 
 z = hist3(data,C);
-pcolor(xi,yi,z);
-caxis([0 length(data)]);
+pcolor(fliplr(xi),fliplr(yi),z);
+if c_bar,
+    colorbar;
+else,
+    caxis([0 size(data,1)]);
+end;
 colormap(flipud(gray));
 shading interp;
 
@@ -26,6 +34,7 @@ fplot(@(x) 0, [boundaries(1), boundaries(2)], 'k');
 fplot(@(x) 1, [boundaries(1), boundaries(2)], 'k');
 fplot(@(x) x, [boundaries(1), boundaries(2)], 'k');
 plot([0, 0], [boundaries(3), boundaries(4)], 'k');
+plot([1, 1], [boundaries(3), boundaries(4)], 'k');
 axis(boundaries);
 
 if (nargin >= 3) && ~isempty(game_point),

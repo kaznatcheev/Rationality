@@ -1,11 +1,13 @@
 %Run both simulations.
-offset = 0.05;
+offset = 0.15;
+epsilon = 0.1;
+max_epoch = 200;
 
 tic;
-[d_i,g_i,m_i] = inviscidRun(100, 500, 10, 0.1, 3, [1, -offset ; 1 + offset, 0]);
+[d_i,g_i,m_i] = inviscidRun(200, max_epoch, 10, 0.1, 3, [1, -offset ; 1 + offset, 0], epsilon);
 toc
 tic;
-[d_rr,g_rr,m_rr] = regRandRun(100, 500, 10, 0.1, 3, [1, -offset ; 1 + offset, 0]);
+[d_rr,g_rr,m_rr] = regRandRun(200, max_epoch, 10, 0.1, 3, [1, -offset ; 1 + offset, 0], epsilon);
 toc
 
 %Calculate the proportion of interactions that are cooperations.
@@ -16,24 +18,29 @@ prop_coop_rr = (2*d_rr(:,1) + d_rr(:,2))./(2*(d_rr(:,1) + d_rr(:,2) + d_rr(:,3))
 plot(prop_coop_i, 'r');
 hold on
 plot(prop_coop_rr, 'b');
+fplot(@(x) 1 - epsilon, [0 max_epoch*10], 'k--');
+fplot(@(x) epsilon, [0 max_epoch*10], 'k--');
+axis([0, max_epoch * 10, 0, 1]);
+hold off
 
-%Plot the genotypes as 2D histograms.
+%Plot the genotypes as 2D histograms, and as bar graphs according wo which
+%game the agents think they are playing
 boundaries = [-2, 2, -1, 3];
+handles = cell(22,1);
+max_densities = zeros(22,1);
 for i = 1:11
     figure;
-    subplot(1,2,1);
-    densityPlot(g_i(:,:,i), boundaries, [-offset, 1 + offset]);
+    subplot(2,2,1);
+    [handles(2*i - 1), max_den densityPlot(g_i(:,:,i), boundaries, [-offset, 1 + offset]);
+    title('Density plot of inviscid run');
     
-    subplot(1,2,2);
+    subplot(2,2,2);
     densityPlot(g_rr(:,:,i), boundaries, [-offset, 1 + offset]);
-end
-
-%Plot the genotypes as bar graphs, according to which game the agents are
-%playing.
-for i = 1:11
-    figure;
+    title('Density plot of viscous run');
+    
+    subplot(2,2,[3 4]);
     bar([gameTypeCount(g_rr(:,:,i)), gameTypeCount(g_i(:,:,i))], 'grouped');
-    axis([0, 13, 0, 100]);
+    axis([0, 13, 0, length(g_i(:,:,i))]);
 end
 
 %Plot the average p and q for inviscid agents.
