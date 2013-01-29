@@ -14,7 +14,7 @@ game = [1, game_point(1); game_point(2), 0];
 if bayes_flag,
     decisionRule = @(genotype,mind) ratBayShaky(genotype, mind, epsilon);
 else
-    decisionRule = @(genotype,mind) ratShaky(genotype, mind, epsilon);
+    decisionRule = @(Genotype,mind) ratShaky(genotype, mind, epsilon);
 end;
 
 if (nargin < 9) || isempty(output_flag),
@@ -83,9 +83,6 @@ if output_flag,
     h = figure;
     plot(prop_coop);
     hold on;
-    for i = 1:runs,
-        plot([tocs_array(i), tocs_array(i)], [0, 1], 'y');
-    end;
     fplot(@(x) 1 - epsilon,[0 finished_step],'k');
     fplot(@(x) epsilon,[0 finished_step],'k');
     hold off;

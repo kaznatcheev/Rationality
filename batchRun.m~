@@ -1,0 +1,7 @@
+function [ output_args ] = batchRun(graph_location,game_point,)
+%BATCHRUN Summary of this function goes here
+%   Detailed explanation goes here
+
+
+end
+
