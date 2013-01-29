@@ -7,7 +7,7 @@ if (nargin < 5) || isempty(c_bar),
 end;
 
 if (nargin < 4) || isempty(n_bins),
-    n_bins = floor(sqrt(length(data)));
+    n_bins = floor(sqrt(size(data,1)));
 end;
 
 if (nargin < 2) || isempty(boundaries),
