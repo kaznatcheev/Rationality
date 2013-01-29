@@ -27,10 +27,12 @@ n_agents = size(adjmx,1);
 
 %create the directory for saving, and record graph
 mkdir(save_directory);
-dlmwrite(strcat(save_directory, '/graph.txt'), adjmx);
+%saving the graph takes up too much space
+%dlmwrite(strcat(save_directory, '/graph.txt'), adjmx);
 
 %set the initial seed
-initial_seed = randi(1000)
+current_time = clock;
+initial_seed = randi(floor(1000000*current_time(6)))
 dlmwrite(strcat(save_directory,'/steps.txt'), [initial_seed, game_point, p_death, mutation_rate, bayes_flag, epsilon, p_shuffle, step_array]);
 
 %generate the initial genotypes and minds
@@ -49,7 +51,9 @@ data = zeros(sum(step_array),11);
 finished_step = 0;
 runs = 0;
 for step_size = step_array,
-    tic;
+    if output_flag,
+        t_start = tic;
+    end;
     %run the simulation
     [data((finished_step + 1):(finished_step + step_size),:), genotypes, ...
         minds] = subRat(adjmx, genotypes, minds, game, [], @deathBirth, ...
@@ -67,7 +71,7 @@ for step_size = step_array,
     
     %output if flag is flipped
     if output_flag,
-        toc;
+        toc(t_start);
         h = densityPlot(genotypes,boundaries,game_point,[],1);
         title(strcat('Density plot of genotypes at epoch ', int2str(finished_step)));
         print(h,'-dpng',strcat(save_directory, '/genotypes', int2str(finished_step), '.png'));

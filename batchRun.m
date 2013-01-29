@@ -14,17 +14,25 @@ steps = [10 20 20 50 100 100 200 500 500 500];
 
 for run = runs,
     %no Bayes inviscid
+    tic;
     recStepRun(graph_location,strcat(name_start, 'ni', int2str(run)), ...
         steps,game_point,0.1,0.05,0,0.1,1,output_flag);
+    toc;
     %no Bayes viscous
+    tic;
     recStepRun(graph_location,strcat(name_start, 'nv', int2str(run)), ...
         steps,game_point,0.1,0.05,0,0.1,0,output_flag);
+    toc;
     %Bayes inviscid
+    tic;
     recStepRun(graph_location,strcat(name_start, 'bi', int2str(run)), ...
         steps,game_point,0.1,0.05,1,0.1,1,output_flag);
+    toc;
     %Bayes viscous
+    tic;
     recStepRun(graph_location,strcat(name_start, 'bv', int2str(run)), ...
         steps,game_point,0.1,0.05,1,0.1,0,output_flag);
+    toc;
 end;
 
 end
