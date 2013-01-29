@@ -1,4 +1,4 @@
-function densityPlot(data, boundaries, game_point, n_bins, c_bar)
+function h = densityPlot(data, boundaries, game_point, n_bins, c_bar)
 %densityPlot(data, boundaries, game_point, n_bins)
 %
 
@@ -19,6 +19,7 @@ yi = linspace(boundaries(3), boundaries(4), n_bins);
 
 C = {xi, yi};
 
+h = figure;
 z = hist3(data,C);
 pcolor(fliplr(xi),fliplr(yi),z);
 if c_bar,
@@ -38,7 +39,7 @@ plot([1, 1], [boundaries(3), boundaries(4)], 'k');
 axis(boundaries);
 
 if (nargin >= 3) && ~isempty(game_point),
-    plot(game_point(1), game_point(2), ... 
+    plot(game_point(1), game_point(2), ...
         '*', 'LineWidth',2,...
         'MarkerEdgeColor','r', ...
         'MarkerSize',15);
@@ -47,4 +48,3 @@ end;
 hold off;
 
 end
-
