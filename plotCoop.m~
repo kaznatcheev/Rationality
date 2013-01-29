@@ -1,0 +1,26 @@
+function plotCoop(data, line_spec, epsilon)
+%plotCoop(data, line_spec, epsilon)
+%   data - 
+
+if (nargin < 2) || isempty(line_spec),
+    line_spec = 'b';
+end;
+
+if (nargin < 3) || isempty(epsilon),
+    epsilon = 0.1;
+end;
+
+max_epoch = size(data, 1);
+
+prop_coop = (2*data(:,1) + data(:,2))./(2*(data(:,1) + data(:,2) + data(:,3)));
+
+figure;
+plot(prop_coop, line_spec);
+hold on;
+plot([0, max_epoch], [epsilon, epsilon], 'k--');
+hold on
+plot([0, max_epoch], [1 - epsilon, 1 - epsilon], 'k--');
+
+axis([0, max_epoch, 0, 1]);
+end
+
