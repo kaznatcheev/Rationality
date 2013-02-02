@@ -9,7 +9,7 @@ for offset = PDrange,
     
     genotypes = zeros(500*length(runs),2);
     for run = runs,
-        genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'/nv',int2str(run),'/genotypes2000.txt'));
+        genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'/bv',int2str(run),'/genotypes2000.txt'));
     end;
     
     h = densityPlot(genotypes,[-2 2 -1 3],[],[],1);

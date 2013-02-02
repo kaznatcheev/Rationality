@@ -1,4 +1,4 @@
-function plotCoop(data, line_spec, epsilon)
+function prop_coop = plotCoop(data, line_spec, epsilon, make_plot)
 %plotCoop(data, line_spec, epsilon)
 %input:
 %   data - max_epoch x 11 matrix where (at timestep t)
@@ -16,6 +16,9 @@ function plotCoop(data, line_spec, epsilon)
 %   line_spec - what the line should look like (e.g., the color)
 %   epsilon - the degree to which the agents' hands are shaky
 
+if (nargin < 3) || isempty(make_plot),
+    make_plot = 1;
+end;
 
 if (nargin < 2) || isempty(line_spec),
     line_spec = 'b';
@@ -28,13 +31,16 @@ end;
 max_epoch = size(data, 1);
 prop_coop = (2*data(:,1) + data(:,2))./(2*(data(:,1) + data(:,2) + data(:,3)));
 
-figure;
-plot(prop_coop, line_spec);
-hold on;
-plot([0, max_epoch], [epsilon, epsilon], 'k--');
-hold on
-plot([0, max_epoch], [1 - epsilon, 1 - epsilon], 'k--');
-axis([0, max_epoch, 0, 1]);
+
+if (make_plot),
+    figure;
+    plot(prop_coop, line_spec);
+    hold on;
+    plot([0, max_epoch], [epsilon, epsilon], 'k--');
+    plot([0, max_epoch], [1 - epsilon, 1 - epsilon], 'k--');
+    axis([0, max_epoch, 0, 1]);
+    hold off;
+end;
 
 end
 
