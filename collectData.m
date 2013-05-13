@@ -21,7 +21,11 @@ function [data] = collectData(genotypes, minds)
 %       [7] is std of p
 %       [8] is std of q
 
-[p,q] = cellfun(@mind2pq, num2cell(minds, 2));
+if size(genotypes,2) == 2,
+    [p,q] = cellfun(@(m) mind2pq(m,0), num2cell(minds, 2));
+else
+    [p,q] = cellfun(@(m) mind2pq(m,0), num2cell(minds, 2)); %FIXME
+end;
 
 avg_u = sum(genotypes(:, 1)) / length(genotypes(:, 1));
 avg_v = sum(genotypes(:, 2)) / length(genotypes(:, 2));
