@@ -22,6 +22,8 @@ Files:
 
 'ratBayShaky' is a decisionRule that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning
 
+'mind2pq' converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.
+
 Relevant blog posts:
 March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. An overview of the the motivation for, and basic structure of, the model, where agents' subjective representation of the game they are playing deviates from the real thing.
 January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. Review of a paper by Davies et al. (2011) where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).
