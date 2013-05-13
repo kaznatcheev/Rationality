@@ -2,8 +2,13 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
     game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, ...
     p_shuffle)
 %[data, genotypes, minds] = subRat (adjmx, genotypes, minds, game, w, ...
-%   updateRule, max_epoch, pmod, reproduce)
-%input:
+%   updateRule, max_epoch, pmod, reproduce, decisionRule,p_s)
+%
+%This runs the subjective-objective rationality simulation by alternating
+%steps of 'playGame', randomize world with probabilty [p_s], [updateRule],
+%and 'collectData'.
+%
+%Input:
 %   adjmx - N x N boolean matrix describing connectivity
 %   genotypes - N x 2 vector where [i, 1] is the ith agent's U value and
 %       [i, 2] is the V value for the game the agent thinks they are playing
@@ -25,7 +30,8 @@ function [data, genotypes, minds] = subRat (adjmx, genotypes, minds, ...
 %   decisionRule - a function (genotype,mind --> strategy) that lets the
 %       agent decide if they want too cooperate or defect based on their
 %       genotype and mind
-%output:
+%
+%Output:
 %   data - max_epoch x 11 matrix where (at timestep t)
 %       [t, 1] is the number of mutual cooperations
 %       [t, 2] is the number of unilateral defections

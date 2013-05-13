@@ -1,10 +1,12 @@
-function [p,q] = mind2pq(mind)
-%[p,q] = mind2pq(mind)
+function [p,q] = mind2pq(mind,alpha)
+%[p,q] = mind2pq(mind,alpha)
 %   Takes the (mind) an agent (which is a 1x4 array) and produces:
 %       p - expected probability of cooperation if he cooperates
 %       q - expected probability of defection if he defects
+%   Given that the agent is 
 
-p = (mind(1) + 1)/(mind(1) + mind(2) + 2);
-q = (mind(3) + 1)/(mind(3) + mind(4) + 2);
+p = (mind(1) + alpha*mind(2) + 1)/(mind(1) + mind(2) + 2);
+q = ((1 - alpha)*mind(3) + 1)/(mind(3) + mind(4) + 2);
 
 end
+

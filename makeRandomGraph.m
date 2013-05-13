@@ -1,7 +1,7 @@
 function adjmx = makeRandomGraph(n,p)
 %adjmx = makeRandomGraph(n,p)
-%   Generates a random graph on (n) nodes with each edge present with
-%   probability (p)
+%   Generates a random graph on [n] nodes with each edge present with
+%   probability [p]
 
 ps = sqrt(p);
 

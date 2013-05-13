@@ -1,6 +1,6 @@
 function batchRunConference(PD_depth,graph_location,runs,output_flag)
 %batchRunConference
-%   Code we ran to generate data for the conference.
+%   Code we ran to generate data for the CogSci2013 conference.
 
 if (nargin < 4) || isempty(output_flag),
     output_flag = 0;
