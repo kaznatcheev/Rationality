@@ -17,9 +17,10 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li>'recStepRun' is the main wrapper for running the simulation. The state of agents' minds and genotypes are not recorded at every time step, because this takes too much space. Rather, an array is passed (step_array) which indicates how many steps should pass before this data is recorded.</li>
 <li>'subRat' is the main file for running the simulation. At each step, it calls 'playGame', potentially randomizes the world, applies an input update rule, and then collects data with 'collectData'.</li>
 <li>'playGame' goes through all of the edges of the graph and simulates the interaction given that the agents use an inputted decisionRule.</li>
-<li>'ratShaky' is a decisionRule that behaves rationally with a shaky hand. This means that on the top right and bottom left corners of the game space, it uses a probabilistic strategy.</li>
-<li>'ratBayShaky' is a decisionRule that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
+<li>'ratShaky' is a (decisionRule) that behaves rationally with a shaky hand. This means that on the top right and bottom left corners of the game space, it uses a probabilistic strategy.</li>
+<li>'ratBayShaky' is a (decisionRule) that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
 <li>'mind2pq' converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.</li>
+<li>'repLocalMutate' is a (reproduce) that mutates U,V with probability mutation_rate within U +- mutation_size and V +- mutation_size.</li>
 </ul>
 
 <h3>Relevant blog posts:</h3>
