@@ -20,13 +20,13 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li>'ratShaky' is a (decisionRule) that behaves rationally with a shaky hand. This means that on the top right and bottom left corners of the game space, it uses a probabilistic strategy.</li>
 <li>'ratBayShaky' is a (decisionRule) that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
 <li>'mind2pq' converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.</li>
-<li>'repLocalMutate' is a (reproduce) that mutates U,V with probability mutation_rate within U +- mutation_size and V +- mutation_size.</li>
+<li>'repLocalMutate' is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
 </ul>
 
 <h3>Relevant blog posts:</h3>
 <ul>
 <li>March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. Overview of the the motivation for and basic structure of the model, where agents' subjective representation of the game they are playing deviates from the real thing.</li>
-<li>March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. The UV game space, with graph of how it is divided up.</li>
+<li>March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. The U,V game space, with graph of how it is divided up.</li>
 <li>March 29, 2012: <a href=http://egtheory.wordpress.com/2012/03/29/random-regular-graphs/>Generating random k-regular graphs</a>. Generating random k-regular graphs.</li>
 <li>October 25, 2012: <a href=http://egtheory.wordpress.com/2012/10/25/ohtsuki-nowak-transform/>Ohtsuki-Nowak transform for replicator dynamics on random graphs</a>. Converting payoff matrices so that you can derive analytic results for games played on random regular graphs.</li>
 <li>January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. Review of Davies et al. (2011), where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).</li>
