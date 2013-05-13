@@ -1,4 +1,4 @@
-function decision = ratBayShaky(genotype,mind,epsilon,alpha)
+function decision = ratBayShaky(genotype,mind,epsilon)
 %decision = ratBayShaky
 %   genotype(1) - U value of game agent percieves
 %   genotype(2) - V value of game agent percieves
@@ -10,8 +10,10 @@ function decision = ratBayShaky(genotype,mind,epsilon,alpha)
 %expected utility and does that action with probability 1 - epsilon. With
 %probability epsilon the agent does the other action
 
-if (nargin < 4) || isempty(alpha),
+if length(genotype) == 2,
     alpha = 0;
+else
+    alpha = genotype(3);
 end;
 
 [p,q] = mind2pq(mind,alpha);
