@@ -24,8 +24,8 @@ Files:
 
 'mind2pq' converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.
 
-Relevant blog posts:
-<ul><li>March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. An overview of the the motivation for, and basic structure of, the model, where agents' subjective representation of the game they are playing deviates from the real thing.</li>
+Relevant blog posts:<ul>
+<li>March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. An overview of the the motivation for, and basic structure of, the model, where agents' subjective representation of the game they are playing deviates from the real thing.</li>
 <li>January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. Review of a paper by Davies et al. (2011) where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).</li>
 <li>January 28, 2013: <a href=http://egtheory.wordpress.com/2013/01/28/subjective-bayes/>Rationality for Bayesian agents</a>. Shows how to obtain the MLE of a rational Bayesian agent faced with a coin toss environment and how to make decisions on this basis.</li>
 <li>January 31, 2013: <a href=http://egtheory.wordpress.com/2013/01/31/need-for-social/>Extra, Special Need for Social Connections</a>. A review of the various subjective factors that have been identified and studied in experimental work on human decision making in games.</li>
