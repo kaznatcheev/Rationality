@@ -39,17 +39,17 @@ behavior when looking at economics or biology. Finally, we argue that our framew
 foundation for combining evolution and learning since it captures the impossibility of defining an
 objective utility/fitness of memes if imitation dynamics are considered at the level of behavior.
 
-<h3>Summary:</h3>
+<h3>Summary</h3>
 Code for working on the objective-subjective rationality project. The overall code structure is heavily borrowed from an earlier development with <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> for the parental investment project.
 
 Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.
 
-<h3>Notes:</h3>
+<h3>Notes</h3>
 <ul>
 <li>We use a death-birth updating scheme, which is implemented in <i>'deathBirth'</i></li>
 </ul>
 
-<h3>Files:</h3>
+<h3>Files</h3>
 <ul>
 <li><i>'batchRunConference'</i> is the entry code for the CogSci 2013 conference paper we wrote. It loads a graph and then runs 'recStepRun' on it.</li>
 <li><i>'recStepRun'</i> is the main wrapper for running the simulation. The state of agents' minds and genotypes are not recorded at every time step, because this takes too much space. Rather, an array is passed (step_array) which indicates how many steps should pass before this data is recorded.</li>
@@ -63,7 +63,7 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li><i>'genoRantInit'</i> created a random initial distribution of genotypes.
 </ul>
 
-<h3>Relevant blog posts:</h3>
+<h3>Relevant blog posts</h3>
 <ul>
 <li>March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. Overview of the the motivation for and basic structure of the model, where agents' subjective representation of the game they are playing deviates from the real thing.</li>
 <li>March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. The U,V game space, with graph of how it is divided up.</li>

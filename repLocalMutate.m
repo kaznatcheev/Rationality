@@ -36,7 +36,7 @@ if isempty(genotype_old),
             rand*(boundaries(4) - boundaries(3)) + boundaries(3), rand];
     else
         genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
-            rand*(boundaries(4) - boundaries(3)) + boundaries(3),
+            rand * (boundaries(4) - boundaries(3)) + boundaries(3), ...
             alpha_values(randi(length(alpha_values)))];
     end;
 end;
@@ -59,7 +59,7 @@ end;
 if rand < alpha_mut_rate,
     if (length(alpha_values) == 1), %mutation step size case
         genotype_new(3) = min(max(genotype_new(3) + ...
-            (rand * alpha_mut_size * 2) - alpha_mut_size, 0), 1);
+            (rand * alpha_values * 2) - alpha_values, 0), 1);
     else
         genotype_new(3) = alpha_values(randi(length(alpha_values)));
     end;
