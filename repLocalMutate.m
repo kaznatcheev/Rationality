@@ -28,17 +28,7 @@ if (nargin < 5) || isempty (alpha_mut_rate),
 end;
 
 if isempty(genotype_old),
-    if (alpha_values == 0),
-        genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
-            rand*(boundaries(4) - boundaries(3)) + boundaries(3)];
-    elseif (length(alpha_values) == 1),
-        genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
-            rand*(boundaries(4) - boundaries(3)) + boundaries(3), rand];
-    else
-        genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
-            rand * (boundaries(4) - boundaries(3)) + boundaries(3), ...
-            alpha_values(randi(length(alpha_values)))];
-    end;
+    genotype_old = genoRandInit(1,boundaries,alpha_values);
 end;
 
 genotype_new = genotype_old;

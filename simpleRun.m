@@ -1,6 +1,10 @@
-function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_values)
+function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_values,plot_flags)
 %The goal of simpleRun is to provide a way to quickly test run the code
 %and look at its outputs
+
+if (nargin < 5) || isempty(plot_flags)
+    plot_flags = [1 1 1]
+end;
 
 game = [1 game_point(1); game_point(2), 0];
 
@@ -23,8 +27,10 @@ adjmx = full(createRandRegGraph(n_agents, degree));
 
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
-geno_ini_plot = densityPlot(genotypes,boundaries,game_point,[],1);
-title('Density plot of genotypes at start');
+if plot_flags(1),
+    geno_ini_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    title('Density plot of genotypes at start');
+end;
 
 minds = zeros(n_agents, 4);
 
@@ -34,8 +40,41 @@ minds = zeros(n_agents, 4);
             boundaries, alpha_mut_rate, alpha_values),...
     @(genotype,mind) ratBayShaky(genotype, mind, epsilon), p_shuffle);
 
-geno_fin_plot = densityPlot(genotypes,boundaries,game_point,[],1);
-title(strcat('Density plot of genotypes at epoch ', int2str(n_epochs)));
+if plot_flags(1),
+    geno_fin_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    title(strcat('Density plot of genotypes at epoch ', int2str(n_epochs)));
+end;
 
+%plot p and q
+if plot_flags(2),
+    figure;
+    hold;
+    plot(data(:,8) + data(:,10)/sqrt(n_agents),'b');
+    plot(data(:,8) - data(:,10)/sqrt(n_agents),'b');
+    plot(data(:,9) + data(:,11)/sqrt(n_agents),'r');
+    plot(data(:,9) - data(:,11)/sqrt(n_agents),'r');
+
+    axis([1 n_epochs 0 1]); 
+    title('Agents minds');
+
+    grid;
+    hold;
+end;
+    
+%plot proportion of cooperation
+if plot_flags(3),
+    prop_coop = (2*data(:,1) + data(:,2))./(2*(data(:,1) + data(:,2) + data(:,3)));
+    h = figure;
+    plot(prop_coop);
+    hold on;
+
+    fplot(@(x) 1 - epsilon,[0 n_epochs],'k');
+    fplot(@(x) epsilon,[0 n_epochs],'k');
+    hold off;
+    axis([0, n_epochs, 0, 1]);
+    title(strcat('Proportion of cooperative interactions (U=', ...
+            num2str(game_point(1)), ' V=', num2str(game_point(2)), ')'));
+end;
+        
 end
 
