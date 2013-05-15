@@ -1,11 +1,19 @@
-function [ output_args ] = simpleRun(n_agents,n_epochs)
+function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game,alpha_values)
 %The goal of simpleRun is to provide a way to quickly test run the code
 %and look at its outputs
 
-%First we make a random graph of degree 3
-adjmx = full(createRandRegGraph(n_agents, 3));
+%set the default parameters
+degree = 3;
+boundaries = [-2, 2, -1, 3];
 
-subR
+%First we make a random graph of degree
+adjmx = full(createRandRegGraph(n_agents, degree));
+
+genotypes = genoRandInit(n_agents,boundaries,alpha_values);
+
+minds = zeros(n_agents, 4);
+
+[data,genotypes,minds] = subRat(adjmx,genotypes,minds,game,[]
 
 end
 

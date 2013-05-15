@@ -1,7 +1,8 @@
 function [data, many_genotypes, many_minds] = regRandRun(n_agents, n_epochs, ...
-    n_runs, pmod, degree, game, epsilon, mutation_rate, mutation_size, boundaries)
+    n_runs, pmod, degree, game, epsilon, mutation_rate, mutation_size, ...
+    boundaries, alpha_mut_rate, alpha_values)
 %[data, genotypes, minds] = regRandRun(n_agents, n_epochs, pmod,degree, game, ...
-%   epsilon, mutation_rate, mutation_size, boundaries)
+%   epsilon, mutation_rate, mutation_size, boundaries,a_mr,alphas)
 %input:
 %   n_agents - number of agents
 %   n_epochs - number of epochs per run
@@ -17,6 +18,18 @@ function [data, many_genotypes, many_minds] = regRandRun(n_agents, n_epochs, ...
 %       [2] is the maximum value of U
 %       [3] is the minimum value of V
 %       [4] is the maximum value of V
+%   a_mr - the chance that an agent's alpha will mutate when reproducing
+%   alphas - the allowed values of alpha
+
+if (nargin < 12) || isempty(alpha_values),
+    alpha_mut_rate = 0;
+    alpha_values = 0;
+end;
+
+if (nargin < 11) || isempty(alpha_mut_rate),
+    alpha_mut_rate = 0;
+    alpha_values = 0;
+end;
 
 if (nargin < 10) || isempty(boundaries),
     boundaries = [-2, 2, -1, 3];
@@ -40,14 +53,13 @@ end;
 
 adjmx = full(createRandRegGraph(n_agents, degree));
 
-genotypes = rand(n_agents, 2);
-genotypes(:, 1) = genotypes(:, 1) .* (boundaries(2) - boundaries(1)) + boundaries(1);
-genotypes(:, 2) = genotypes(:, 2) .* (boundaries(4) - boundaries(3)) + boundaries(3);
+genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
 minds = zeros(n_agents, 4);
 
 [data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds, game, [], ...
     @deathBirth, n_epochs, pmod, ...
-    @(genotype) repLocalMutate(genotype, mutation_rate, mutation_size, boundaries), ...
+    @(genotype) repLocalMutate(genotype, mutation_rate, mutation_size, ...
+        boundaries, alpha_mut_rate, alpha_values), ...
     @(genotype, mind) ratBayShaky(genotype, mind, epsilon), [], n_runs);
 end

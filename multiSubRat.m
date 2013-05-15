@@ -1,7 +1,9 @@
 function [data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds, ...
-    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, p_shuffle, n_runs)
+    game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, ...,
+    p_shuffle, n_runs)
 %[data, many_genotypes, many_minds] = multiSubRat(adjmx, genotypes, minds,
-%   game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, n_runs) 
+%   game, w, updateRule, max_epoch, pmod, reproduce, decisionRule, n_runs,
+%   ) 
 %   
 %   The first 10 parameters are the same as subRat, type "help subRat" to
 %   learn more. The 11th parameter (n_runs) is optional, if empty then will
