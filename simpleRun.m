@@ -1,6 +1,8 @@
-function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game,alpha_values)
+function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_values)
 %The goal of simpleRun is to provide a way to quickly test run the code
 %and look at its outputs
+
+game = [1 game_point(1); game_point(2), 0];
 
 %set the default parameters
 degree = 3;
@@ -21,6 +23,9 @@ adjmx = full(createRandRegGraph(n_agents, degree));
 
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
+geno_ini_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+title('Density plot of genotypes at start');
+
 minds = zeros(n_agents, 4);
 
 [data,genotypes,minds] = subRat(adjmx, genotypes, minds, game, [], ...
@@ -28,6 +33,9 @@ minds = zeros(n_agents, 4);
     @(genotype) repLocalMutate(genotype, mutation_rate, mutation_size, ...
             boundaries, alpha_mut_rate, alpha_values),...
     @(genotype,mind) ratBayShaky(genotype, mind, epsilon), p_shuffle);
+
+geno_fin_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+title(strcat('Density plot of genotypes at epoch ', int2str(n_epochs)));
 
 end
 
