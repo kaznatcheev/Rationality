@@ -1,4 +1,4 @@
-function genotype_new = repLocalMutate(genotype_old, mutation_rate, 
+function genotype_new = repLocalMutate(genotype_old, mutation_rate, ...
     mutation_size, boundaries, alpha_mut_rate, alpha_values)
 %genotype = repLocalMutate(genotype, mutation_rate, mutation_size)
 %
@@ -32,11 +32,11 @@ if isempty(genotype_old),
         genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
             rand*(boundaries(4) - boundaries(3)) + boundaries(3)];
     elseif (length(alpha_values) == 1),
-        genotypes_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
+        genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
             rand*(boundaries(4) - boundaries(3)) + boundaries(3), rand];
     else
-        genotypes_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
-            rand*(boundaries(4) - boundaries(3)) + boundaries(3),
+        genotype_old = [rand * (boundaries(2) - boundaries(1)) + boundaries(1), ...
+            rand * (boundaries(4) - boundaries(3)) + boundaries(3),
             alpha_values(randi(length(alpha_values)))];
     end;
 end;
@@ -61,6 +61,8 @@ if rand < alpha_mut_rate,
         genotype_new(3) = min(max(genotype_new(3) + ...
             (rand * alpha_mut_size * 2) - alpha_mut_size, 0), 1);
     else
-        ge
+        genotype_new(3) = alpha_values(randi(length(alpha_values)));
     end;
+end;
+
 end
