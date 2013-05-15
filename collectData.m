@@ -24,7 +24,7 @@ function [data] = collectData(genotypes, minds)
 if size(genotypes,2) == 2,
     [p,q] = cellfun(@(m) mind2pq(m,0), num2cell(minds, 2));
 else
-    [p,q] = cellfun(@(m) mind2pq(m,0), num2cell(minds, 2)); %FIXME
+    [p,q] = cellfun(@(m) mind2pq(m(1:4),m(5)), num2cell([minds'; genotypes(:,3)']', 2));
 end;
 
 avg_u = sum(genotypes(:, 1)) / length(genotypes(:, 1));
