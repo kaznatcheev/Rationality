@@ -27,7 +27,7 @@ if new_fig,
     h = figure;
 end;
 
-z = hist3(data,C);
+z = hist3(data(:,1:2),C);
 pcolor(fliplr(xi),fliplr(yi),z);
 if c_bar,
     colorbar;
