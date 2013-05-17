@@ -11,7 +11,7 @@ game = [1 game_point(1); game_point(2), 0];
 %set the default parameters
 degree = 3;
 boundaries = [-2, 2, -1, 3];
-p_death = 0.1;
+p_death = 0.05;
 mutation_rate = 0.05;
 mutation_size = 0.1;
 if (alpha_values == 0)
@@ -20,7 +20,7 @@ else
     alpha_mut_rate = 0.05;
 end;
 p_shuffle = 0;
-epsilon = 0.05;
+epsilon = 0.1;
 
 %First we make a random graph of degree
 adjmx = full(createRandRegGraph(n_agents, degree));
@@ -28,7 +28,9 @@ adjmx = full(createRandRegGraph(n_agents, degree));
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
 if plot_flags(1),
-    geno_ini_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    h = subplot(1,2,1);
+    set(h, 'position', [1 1 1 1]]
+    densityPlot(genotypes,boundaries,game_point,[],1,0);
     title('Density plot of genotypes at start');
 end;
 
@@ -41,7 +43,8 @@ minds = zeros(n_agents, 4);
     @(genotype,mind) ratBayShaky(genotype, mind, epsilon), p_shuffle);
 
 if plot_flags(1),
-    geno_fin_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    subplot(1,2,2); 
+    densityPlot(genotypes,boundaries,game_point,[],1,0);
     title(strcat('Density plot of genotypes at epoch ', int2str(n_epochs)));
 end;
 
@@ -63,7 +66,7 @@ end;
     
 %plot proportion of cooperation
 if plot_flags(3),
-    prop_coop = plotCoop(data, epsilon, game_point, [], 0, 'b');
+    prop_coop = plotCoop(data(:,1:3), epsilon, game_point, [], 0, 'b');
 end;
         
 end
