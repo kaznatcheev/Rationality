@@ -39,12 +39,15 @@ behavior when looking at economics or biology. Finally, we argue that our framew
 foundation for combining evolution and learning since it captures the impossibility of defining an
 objective utility/fitness of memes if imitation dynamics are considered at the level of behavior.
 
+<h3>Summary</h3>
+Code for working on the objective-subjective rationality project. 
+The overall code structure is heavily borrowed from an earlier development with <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> for the parental investment project.
+
+Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.
 
 <h3>Notes</h3>
 <ul>
-<li>Some code structure is borrowed from an earlier code by <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> and Artem for the parental investment project.
 <li>We use a death-birth updating scheme, which is implemented in <i>deathBirth</i></li>
-<li>Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.</li>
 </ul>
 
 <h3>Functions</h3>

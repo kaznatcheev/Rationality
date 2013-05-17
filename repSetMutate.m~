@@ -16,7 +16,7 @@ function genotype_new = repSetMutate(genotype_old, UV_mut_rate, ...
 %                   [1] is the agent's U value, and
 %                   [2] is its V value
 %   mr_UV       - the probability that the agent experiences a mutation
-%   UVs
+%   UVs         - n x 2 verctor of the n allowed (U,V) pairs
 %   mr_a        - mutation rate for alpha
 %   alphas      - allowed values for alpha
 
@@ -30,10 +30,12 @@ if (nargin < 5) || isempty (alpha_mut_rate),
 end;
 
 if isempty(genotype_old),
-    rand_UV = randi(size(UV_values,1));
-    rand_U = UV_values(rand_UV,1);
-    rand_V = UV_values(rand_UV,2);
-    genotype_old = genoRandInit(1,[rand_U, rand_U, rand_V, rand_V],alphas);
+    'hi'
+    %rand_UV = randi(size(UV_values,1));
+    %rand_U = UV_values(rand_UV,1);
+    %rand_V = UV_values(rand_UV,2);
+    ra
+    genotype_old = genoRandInit(1,[rand_U, rand_U, rand_V, rand_V],alpha_values);
 end;
 
 genotype_new = genotype_old;

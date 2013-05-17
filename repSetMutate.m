@@ -20,12 +20,12 @@ function genotype_new = repSetMutate(genotype_old, UV_mut_rate, ...
 %   mr_a        - mutation rate for alpha
 %   alphas      - allowed values for alpha
 
-if (nargin < 6) || isempty(alpha_values),
+if (nargin < 5) || isempty(alpha_values),
     alpha_values = 0;
     alpha_mut_rate = 0;
 end;
 
-if (nargin < 5) || isempty (alpha_mut_rate),
+if (nargin < 4) || isempty (alpha_mut_rate),
     alpha_mut_rate = 0;
 end;
 
@@ -33,7 +33,7 @@ if isempty(genotype_old),
     rand_UV = randi(size(UV_values,1));
     rand_U = UV_values(rand_UV,1);
     rand_V = UV_values(rand_UV,2);
-    genotype_old = genoRandInit(1,[rand_U, rand_U, rand_V, rand_V],alphas);
+    genotype_old = genoRandInit(1,[rand_U, rand_U, rand_V, rand_V],alpha_values);
 end;
 
 genotype_new = genotype_old;
