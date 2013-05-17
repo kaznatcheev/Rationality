@@ -7,7 +7,7 @@ function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_v
 %subjective game perception to evolve, by default set to 1.
 
 if (nargin < 6) || isempty(plot_flags)
-    plot_flags = [1 1 1 1]
+    plot_flags = [1 1 1 1];
 end;
 
 if (nargin < 5) || isempty(evo_UV_flag)

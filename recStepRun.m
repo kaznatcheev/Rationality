@@ -1,8 +1,8 @@
 function data = recStepRun(graph_location,save_directory, step_array, ...
     game_point,p_death, mutation_rate, bayes_flag, epsilon, p_shuffle, ...
-    output_flag,alpha_mut_rate,alpha_values)
+    output_flag,alpha_mut_rate,alpha_values,evo_UV_flag)
 %data = recStepRun(G_loc,save_dir,steps,g_p,p_d,mut_rat,bayes_flag, epsilon,
-%   p_s, out_flag,a_mr,alphas)
+%   p_s, out_flag,a_mr,alphas,UV_flag)
 %
 %This is the main wrapper for running the simulation, it has the following
 %input variables:
@@ -30,6 +30,8 @@ function data = recStepRun(graph_location,save_directory, step_array, ...
 %                   0 - all agents are rational (default value)
 %                   a - agents in [0 1] with mutation step size a.
 %               if a matrix, then taken as possible values.
+%   UV-flag     - if 0 then game is fixed at true game, else evolves, by
+%               default set to 1.
 %
 %Outputs [data] that is a num_cycles x 11 matrix where (at time step t):
 %   [t, 1] is the number of mutual cooperations
@@ -73,6 +75,10 @@ else
     decisionRule = @(genotype,mind) ratShaky(genotype, mind, epsilon);
 end;
 
+if (nargin < 12) || isempty(evo_UV_flag),
+    evo_UV_flag = 1;
+end;
+
 if (nargin < 11) || isempty(alpha_values),
     alpha_values = 0;
     alpha_mut_rate = 0;
@@ -104,12 +110,25 @@ initial_seed = randi(floor(1000000*current_time(6)))
 dlmwrite(strcat(save_directory,'/steps.txt'), [initial_seed, game_point, p_death, mutation_rate, bayes_flag, epsilon, p_shuffle, step_array]);
 
 %generate the initial genotypes and minds
-genotypes = genoRandInit(n_agents,boundaries,alpha_values);
+if evo_UV_flag,
+    genotypes = genoRandInit(n_agents,boundaries,alpha_values);
+else
+    genotypes = genoRandInit(n_agents,[game_point(1), game_point(1), game_point(2), game_point(2)],alpha_values);
+end;
 minds = zeros(n_agents, 4);
 
 %record said genotypes and minds
 dlmwrite(strcat(save_directory,'/genotypes0.txt'), genotypes);
 dlmwrite(strcat(save_directory,'/minds0.txt'),minds); %kind of redundant since all zeros
+
+%pick the reproduce rule
+if evo_UV_flag,
+    reproduce = @(genotype) repLocalMutate(genotype, mutation_rate, ...
+        mutation_size, boundaries, alpha_mut_rate, alpha_values);
+else
+    reproduce = @(genotype) repSetMutate(genotype, mutation_rate, ...
+        game_point, alpha_mut_rate, alpha_values);
+end;
 
 %Start running the simulations
 data = zeros(sum(step_array),11 + 2 * (size(genotypes, 2) > 2));
@@ -122,10 +141,7 @@ for step_size = step_array,
     %run the simulation
     [data((finished_step + 1):(finished_step + step_size),:), genotypes, ...
         minds] = subRat(adjmx, genotypes, minds, game, [], @deathBirth, ...
-        step_size, p_death, ... 
-        @(genotype) repLocalMutate(genotype, mutation_rate, mutation_size, ...
-            boundaries, alpha_mut_rate, alpha_values),...
-        decisionRule, p_shuffle);
+        step_size, p_death, reproduce,decisionRule, p_shuffle);
     finished_step = finished_step + step_size;
     runs = runs + 1;
     
