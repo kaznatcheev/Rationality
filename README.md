@@ -49,18 +49,19 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li>We use a death-birth updating scheme, which is implemented in <i>'deathBirth'</i></li>
 </ul>
 
-<h3>Files</h3>
+<h3>Functions</h3>
 <ul>
-<li><i>'batchRunConference'</i> is the entry code for the CogSci 2013 conference paper we wrote. It loads a graph and then runs 'recStepRun' on it.</li>
-<li><i>'recStepRun'</i> is the main wrapper for running the simulation. The state of agents' minds and genotypes are not recorded at every time step, because this takes too much space. Rather, an array is passed (step_array) which indicates how many steps should pass before this data is recorded.</li>
-<li><i>'subRat'</i> is the main file for running the simulation. At each step, it calls 'playGame', potentially randomizes the world, applies an input update rule, and then collects data with 'collectData'.</li>
-<li><i>'playGame'</i> goes through all of the edges of the graph and simulates the interaction given that the agents use an inputted decisionRule.</li>
-<li><i>'ratShaky'</i> is a (decisionRule) that behaves rationally with a shaky hand. This means that on the top right and bottom left corners of the game space, it uses a probabilistic strategy.</li>
-<li><i>'ratBayShaky'</i> is a (decisionRule) that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
-<li><i>'mind2pq'</i> converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.</li>
-<li><i>'repLocalMutate'</i> is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
-<li><i>'saveRegRandGraph'</i> is used to generate a regular random graph and save the adjacency matrix</li>
-<li><i>'genoRantInit'</i> created a random initial distribution of genotypes.
+<li><i>batchRunConference</i> is the entry code for the CogSci 2013 conference paper we wrote. It loads a graph and then runs 'recStepRun' on it.</li>
+<li><i>recStepRun</i> is the main wrapper for running the simulation. The state of agents' minds and genotypes are not recorded at every time step, because this takes too much space. Rather, an array is passed (step_array) which indicates how many steps should pass before this data is recorded.</li>
+<li><i>subRat</i> is the main file for running the simulation. At each step, it calls 'playGame', potentially randomizes the world, applies an input update rule, and then collects data with 'collectData'.</li>
+<li><i>playGame</i> goes through all of the edges of the graph and simulates the interaction given that the agents use an inputted decisionRule.</li>
+<li><i>ratShaky</i> is a (decisionRule) that behaves rationally with a shaky hand. This means that on the top right and bottom left corners of the game space, it uses a probabilistic strategy.</li>
+<li><i>ratBayShaky</i> is a (decisionRule) that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
+<li><i>mind2pq'</i> converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.</li>
+<li><i>repLocalMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
+<li><i>saveRegRandGraph</i> is used to generate a regular random graph and save the adjacency matrix</li>
+<li><i>genoRantnit</i> created a random initial distribution of genotypes.
+<li><i>plotCoop</i> is used to make the nice proportion of cooperation plots.
 </ul>
 
 <h3>Relevant blog posts</h3>
