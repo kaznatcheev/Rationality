@@ -3,7 +3,7 @@ function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_v
 %and look at its outputs
 
 if (nargin < 5) || isempty(plot_flags)
-    plot_flags = [1 1 1]
+    plot_flags = [1 1 1 1]
 end;
 
 game = [1 game_point(1); game_point(2), 0];
@@ -68,6 +68,19 @@ end;
 if plot_flags(3),
     prop_coop = plotCoop(data(:,1:3), epsilon, game_point, [], 0, 'b');
 end;
-        
+
+%plot alphas
+if plot_flags(4),
+    figure;
+    hold on;
+    plot(data(:,12) + data(:,13) / sqrt(n_agents), 'b');
+    plot(data(:,12) - data(:,13) / sqrt(n_agents), 'b');
+    
+    axis([1 n_epochs 0 1]);
+    title('Agent alphas');
+    
+    grid;
+    hold off;
+end;
 end
 
