@@ -20,6 +20,8 @@ function [data] = collectData(genotypes, minds)
 %       [6] is average q
 %       [7] is std of p
 %       [8] is std of q
+%       [9] is average alpha (if alphas are used)
+%       [10] is std of alpha (if alphas are used)
 
 if size(genotypes,2) == 2,
     [p,q] = cellfun(@(m) mind2pq(m,0), num2cell(minds, 2));
@@ -35,7 +37,13 @@ avg_p = sum(p) / length(p);
 avg_q = sum(q) / length(q);
 std_p = std(p);
 std_q = std(q);
+if size(genotypes, 2) == 2,
+    data = [avg_u, avg_v, std_u, std_v, avg_p, avg_q, std_p, std_q];
+else
+    avg_alpha = sum(genotypes(:, 3)) / length(genotypes(:, 3));
+    std_alpha = std(genotypes(:, 3));
+    data = [avg_u, avg_v, std_u, std_v, avg_p, avg_q, std_p, std_q, avg_alpha, std_alpha];
+end;
 
-data = [avg_u, avg_v, std_u, std_v, avg_p, avg_q, std_p, std_q];
 end
 

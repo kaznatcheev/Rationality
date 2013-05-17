@@ -43,6 +43,8 @@ function data = recStepRun(graph_location,save_directory, step_array, ...
 %   [t, 9] is average q
 %   [t, 10] is std of p
 %   [t, 11] is std of q
+%   [t, 12] is average alpha (if alphas are used)
+%   [t, 13] is std of alpha (if alphas are used)
 %
 %The results are saved in [save_dir] in a series of files:
 %   steps.txt       - saves all initial parameters and seed in the order:
@@ -110,7 +112,7 @@ dlmwrite(strcat(save_directory,'/genotypes0.txt'), genotypes);
 dlmwrite(strcat(save_directory,'/minds0.txt'),minds); %kind of redundant since all zeros
 
 %Start running the simulations
-data = zeros(sum(step_array),11);
+data = zeros(sum(step_array),11 + 2 * (size(genotypes, 2) > 2));
 finished_step = 0;
 runs = 0;
 for step_size = step_array,

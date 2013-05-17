@@ -56,7 +56,8 @@ if (nargin < 11) || isempty(p_shuffle),
     p_shuffle = 0;
 end;
 
-data = zeros(max_epoch, 11);
+data = zeros(max_epoch, 11 + 2 * (size(genotypes, 2) > 2));
+
 edge_list = adjmx2edge_list(adjmx);
 
 for epoch = 1:max_epoch 
@@ -70,6 +71,6 @@ for epoch = 1:max_epoch
     [genotypes, change_list] = updateRule(adjmx, genotypes, w, fitnesses, pmod, reproduce);
     minds(change_list,:) = zeros(length(change_list),4); %clear the minds of newborns
     data(epoch, 1:3) = interactions;
-    data(epoch, 4:11) = collectData(genotypes, minds);
+    data(epoch, 4:11 + 2 * (size(genotypes, 2) > 2)) = collectData(genotypes, minds);
 end
     
