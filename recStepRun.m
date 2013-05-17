@@ -147,20 +147,8 @@ end;
 dlmwrite(strcat(save_directory, '/data.txt'), data);
 
 if output_flag,
-    prop_coop = (2*data(:,1) + data(:,2))./(2*(data(:,1) + data(:,2) + data(:,3)));
-    h = figure;
-    plot(prop_coop);
-    hold on;
-    for i = 1:runs,
-        plot([tocs_array(i), tocs_array(i)], [0, 1], 'y');
-    end;
-    fplot(@(x) 1 - epsilon,[0 finished_step],'k');
-    fplot(@(x) epsilon,[0 finished_step],'k');
-    hold off;
-    axis([0, finished_step, 0, 1]);
-    title(strcat('Proportion of cooperative interactions (U=', ...
-        num2str(game_point(1)), ' V=', num2str(game_point(2)), ')'));
-    print(h,'-dpng',strcat(save_directory, '/cooperation.png'));
+    prop_coop = plotCoop(data(:,1:3), epsilon, game_point, tocs_array, ...
+        save_directory, 'b');
 end;
 
 end

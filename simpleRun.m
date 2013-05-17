@@ -11,7 +11,7 @@ game = [1 game_point(1); game_point(2), 0];
 %set the default parameters
 degree = 3;
 boundaries = [-2, 2, -1, 3];
-p_death = 0.1;
+p_death = 0.05;
 mutation_rate = 0.05;
 mutation_size = 0.1;
 if (alpha_values == 0)
@@ -20,7 +20,7 @@ else
     alpha_mut_rate = 0.05;
 end;
 p_shuffle = 0;
-epsilon = 0.05;
+epsilon = 0.1;
 
 %First we make a random graph of degree
 adjmx = full(createRandRegGraph(n_agents, degree));
@@ -63,17 +63,7 @@ end;
     
 %plot proportion of cooperation
 if plot_flags(3),
-    prop_coop = (2*data(:,1) + data(:,2))./(2*(data(:,1) + data(:,2) + data(:,3)));
-    h = figure;
-    plot(prop_coop);
-    hold on;
-
-    fplot(@(x) 1 - epsilon,[0 n_epochs],'k');
-    fplot(@(x) epsilon,[0 n_epochs],'k');
-    hold off;
-    axis([0, n_epochs, 0, 1]);
-    title(strcat('Proportion of cooperative interactions (U=', ...
-            num2str(game_point(1)), ' V=', num2str(game_point(2)), ')'));
+    prop_coop = plotCoop(data(:,1:3), epsilon, game_point, [], 0, 'b');
 end;
         
 end
