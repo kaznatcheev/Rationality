@@ -28,7 +28,7 @@ adjmx = full(createRandRegGraph(n_agents, degree));
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
 if plot_flags(1),
-    density_plot = figure('position', [250 500 1500 500]);
+    figure('position', [250 500 1500 500]);
     subplot(1,2,1);
     densityPlot(genotypes,boundaries,game_point,[],1,0);
     title('Density plot of genotypes at start');
