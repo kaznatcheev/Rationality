@@ -6,13 +6,8 @@ function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_v
 %and look at its outputs. [evo_UV_flag] sets a flag on if we want the
 %subjective game perception to evolve, by default set to 1.
 
-<<<<<<< HEAD
 if (nargin < 6) || isempty(plot_flags)
-    plot_flags = [1 1 1]
-=======
-if (nargin < 5) || isempty(plot_flags)
     plot_flags = [1 1 1 1]
->>>>>>> f8359c2ab3154ed8affd68d4524325d1e14bea09
 end;
 
 if (nargin < 5) || isempty(evo_UV_flag)
