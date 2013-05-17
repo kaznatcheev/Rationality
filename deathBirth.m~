@@ -1,12 +1,12 @@
-function [genotypesNew, new_minds, new_minds_indexes] = deathBirth( adjmx, ...
+function [genotypesNew, dead] = deathBirth( adjmx, ...
     genotypesOld, w, fitnesses, pmod, reproduce)
 %deathBirth(adjmx,genotypes,w,fitnesses,pmod,reproduce)
-%   does deathBirth updating on (genotypes) with (fitnesses) given
-%   reproduction graph (adjmx) and reproductive rule (reproduce).
+%   this is an updateRule that does deathBirth updating on (genotypes) with
+%   (fitnesses) given by reproduction graph (adjmx) and reproductive rule 
+%(reproduce).
 %   reproduce is a function
 
 genotypesNew = genotypesOld;
-minds = 
 
 r = randperm(length(genotypesOld));
 
@@ -34,7 +34,6 @@ for i = 1:n_killed
     else,
         genotypesNew(dead(i),:) = reproduce([]);
     end;
-    minds(dead(i),:) = zeros(1,4); %clear the newborn's mind
 end
 
 

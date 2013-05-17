@@ -1,10 +1,9 @@
-function genotype_new = repLocalMutate(genotype_old, UV_mut_rate, ...
-    UV_mutation_size, boundaries, alpha_mut_rate, alpha_values)
-%genotype = repLocalMutate(genotype, mr_UV, ms_UV, bounds, mr_a, alphas)
+function genotype_new = repSetMutate(genotype_old, UV_mut_rate, ...
+    UV_values, alpha_mut_rate, alpha_values)
+%genotype = repSetMutate(genotype, mr_UV, UVs, bounds, mr_a, alphas)
 %
 %This is a (reproduce) rule that takes the old [genotype] and mutates U,V 
-%with probability [mr_UV], with the new values within boundaries given by
-%[bounds] and U,V +- [ms_UV].
+%with probability [mr_UV], with new values selected from the list [UVs].
 %
 %If [mr_a] and [alphas] are given (but default they are 0) then with
 %probability [mr_a] the alpha of genotype is modified such that
@@ -17,12 +16,7 @@ function genotype_new = repLocalMutate(genotype_old, UV_mut_rate, ...
 %                   [1] is the agent's U value, and
 %                   [2] is its V value
 %   mr_UV       - the probability that the agent experiences a mutation
-%   ms_UV       - the maximum size of a mutation "step"
-%   bounds      - 1 x 4 vector that sets the boundaries for U and V, where
-%                   [1] is minimum value of U
-%                   [2] is the maximum value of U
-%                   [3] is the minimum value of V
-%                   [4] is the maximum value of V
+%   UVs
 %   mr_a        - mutation rate for alpha
 %   alphas      - allowed values for alpha
 
@@ -36,21 +30,19 @@ if (nargin < 5) || isempty (alpha_mut_rate),
 end;
 
 if isempty(genotype_old),
-    genotype_old = genoRandInit(1,boundaries,alpha_values);
+    rand_UV = randi(size(UV_values,1));
+    rand_U = UV_values(rand_UV,1);
+    rand_V = UV_values(rand_UV,2);
+    genotype_old = genoRandInit(1,[rand_U, rand_U, rand_V, rand_V],alphas);
 end;
 
 genotype_new = genotype_old;
 
 %mutation in U,V
 if rand < UV_mut_rate,
-    for i = 1:2
-        genotype_new(i) = genotype_new(i) + (rand * UV_mutation_size * 2) - UV_mutation_size;
-    end;
-    
-    if (nargin == 4) && ~isempty(boundaries),
-        genotype_new(1) = min(max(genotype_new(1), boundaries(1)), boundaries(2));
-        genotype_new(2) = min(max(genotype_new(2), boundaries(3)), boundaries(4));
-    end;
+    rand_UV = randi(size(UV_values,1));
+    genotype_new(1) = UV_values(rand_UV,1);
+    genotype_new(2) = UV_values(rand_UV,2);
 end;
 
 %mutation in alpha
@@ -64,3 +56,4 @@ if rand < alpha_mut_rate,
 end;
 
 end
+

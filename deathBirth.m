@@ -1,9 +1,9 @@
 function [genotypesNew, dead] = deathBirth( adjmx, ...
     genotypesOld, w, fitnesses, pmod, reproduce)
 %deathBirth(adjmx,genotypes,w,fitnesses,pmod,reproduce)
-%   does deathBirth updating on (genotypes) with (fitnesses) given
-%   reproduction graph (adjmx) and reproductive rule (reproduce).
-%   reproduce is a function
+%   this is an updateRule that does deathBirth updating on (genotypes) with
+%   (fitnesses) given by reproduction graph (adjmx) and reproductive rule 
+%   (reproduce) where (reproduce) is a function
 
 genotypesNew = genotypesOld;
 
