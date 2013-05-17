@@ -6,8 +6,13 @@ function [data,genotypes,minds] = simpleRun(n_agents,n_epochs,game_point,alpha_v
 %and look at its outputs. [evo_UV_flag] sets a flag on if we want the
 %subjective game perception to evolve, by default set to 1.
 
+<<<<<<< HEAD
 if (nargin < 6) || isempty(plot_flags)
     plot_flags = [1 1 1]
+=======
+if (nargin < 5) || isempty(plot_flags)
+    plot_flags = [1 1 1 1]
+>>>>>>> f8359c2ab3154ed8affd68d4524325d1e14bea09
 end;
 
 if (nargin < 5) || isempty(evo_UV_flag)
@@ -40,7 +45,9 @@ else
 end;
 
 if plot_flags(1),
-    geno_ini_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    figure('position', [250 500 1500 500]);
+    subplot(1,2,1);
+    densityPlot(genotypes,boundaries,game_point,[],1,0);
     title('Density plot of genotypes at start');
 end;
 
@@ -60,7 +67,8 @@ end;
     @(genotype,mind) ratBayShaky(genotype, mind, epsilon), p_shuffle);
 
 if plot_flags(1),
-    geno_fin_plot = densityPlot(genotypes,boundaries,game_point,[],1);
+    subplot(1,2,2);
+    densityPlot(genotypes,boundaries,game_point,[],1,0);
     title(strcat('Density plot of genotypes at epoch ', int2str(n_epochs)));
 end;
 
@@ -84,6 +92,19 @@ end;
 if plot_flags(3),
     prop_coop = plotCoop(data(:,1:3), epsilon, game_point, [], 0, 'b');
 end;
-        
+
+%plot alphas
+if plot_flags(4),
+    figure;
+    hold on;
+    plot(data(:,12) + data(:,13) / sqrt(n_agents), 'b');
+    plot(data(:,12) - data(:,13) / sqrt(n_agents), 'b');
+    
+    axis([1 n_epochs 0 1]);
+    title('Agent alphas');
+    
+    grid;
+    hold off;
+end;
 end
 
