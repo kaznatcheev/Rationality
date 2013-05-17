@@ -59,6 +59,7 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li><i>ratBayShaky</i> is a (decisionRule) that behaves rationally given its p and q values, which it infers from its mind using alpha-self-absorbed learning</li>
 <li><i>mind2pq'</i> converts an agent's pseudocount to p and q, given its self-absorption alpha, as given in <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>this blog post</a>.</li>
 <li><i>repLocalMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
+<li><i>repSetMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within a finte set of choices.</li>
 <li><i>saveRegRandGraph</i> is used to generate a regular random graph and save the adjacency matrix</li>
 <li><i>genoRantnit</i> created a random initial distribution of genotypes.
 <li><i>plotCoop</i> is used to make the nice proportion of cooperation plots.
