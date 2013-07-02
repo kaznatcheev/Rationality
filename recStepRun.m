@@ -16,22 +16,21 @@ function data = recStepRun(graph_location,save_directory, step_array, ...
 %               death-birth updating
 %   mut_rat     - mutation probability of (U,V) during reproduction, the
 %               mutation size is fixed at 0.1
-%   bayes_flag  - should the agent use bayesian updating of its belifes in
+%   bayes_flag  - should the agent use bayesian updating of its beliefs in
 %               p and q? 0 means that [decisionRule] is set to 'ratShaky',
 %               and 1 means that [decisionRule] is set to 'ratBayShaky'.
-%   epsilon     - probability of shaky hand; default value is 0.05
+%   epsilon     - probability of shaky hand; default 0.05
 %   p_s         - probability that agents are randomly redistributed over
 %               graph at each cycle (0 for static, and 1 for inviscid)
-%   out_flag    - should we plot and save the figures of results? default
-%               value is 0
+%   out_flag    - should we plot and save the figures of results? default 0
 %   a_mr        - mutation probability of alphas; default 0.
 %   alphas      - allowed values for self-absorption, if a single number
 %               then it is interpreted as:
 %                   0 - all agents are rational (default value)
 %                   a - agents in [0 1] with mutation step size a.
 %               if a matrix, then taken as possible values.
-%   UV-flag     - if 0 then game is fixed at true game, else evolves, by
-%               default set to 1.
+%   UV-flag     - if 0 then game is fixed at true game, else evolves;
+%               default 1.
 %
 %Outputs [data] that is a num_cycles x 11 matrix where (at time step t):
 %   [t, 1] is the number of mutual cooperations
