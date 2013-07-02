@@ -11,7 +11,7 @@ if (nargin < 4) || isempty(runs),
 end;
 
 if (nargin < 3) || isempty(graph_location),
-    ggraph_location = '../RationalityData/graphBig1.txt';
+    graph_location = '../RationalityData/graphBig1.txt';
 end;
 
 if (nargin < 2) || isempty(evo_UV_flag),
