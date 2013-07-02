@@ -30,7 +30,7 @@ for run = runs,
     %Bayes viscous (alpha = [0 0.5])
     tic;
     recStepRun(graph_location,strcat(name_start, 'b2v', int2str(run)), ...
-        steps,game_point,0.1,0.05,1,0.1,0,output_flag);
+        steps,game_point,0.1,0.05,1,0.1,0,output_flag,0.05,[0 0.5]);
     toc;
     
     %Bayes viscous (alpha = all)
