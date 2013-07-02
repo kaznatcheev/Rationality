@@ -22,7 +22,7 @@ end;
 game_point = [-PD_depth, 1 + PD_depth];
 
 name_start = strcat('../RationalityData/U', int2str(10*game_point(1)), 'V', int2str(10*game_point(2)));
-mkdir(name_start);
+%mkdir(name_start);
 steps = [10 20 20 50 100 100 200 500 500 500];
 
 for run = runs,

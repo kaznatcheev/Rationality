@@ -32,7 +32,7 @@ function data = recStepRun(graph_location,save_directory, step_array, ...
 %   UV-flag     - if 0 then game is fixed at true game, else evolves;
 %               default 1.
 %
-%Outputs [data] that is a num_cycles x 11 matrix where (at time step t):
+%Outputs [data] that is a num_cycles x 13 matrix where (at time step t):
 %   [t, 1] is the number of mutual cooperations
 %   [t, 2] is the number of unilateral defections
 %   [t, 3] is the number of mutual defections
