@@ -12,8 +12,8 @@ if (nargin < 3) || isempty(PD_depths),
     PD_depths = 0.1:0.1:1.0;
 end;
 
-pq_avg = zeros(length(PD_depth),1);
-pq_std = zeros(length(PD_depth),1);
+pq_avg = zeros(length(PD_depths),1);
+pq_std = zeros(length(PD_depths),1);
 
 for i = 1:length(PD_depths),
     game_point = [-PD_depths(i),1 + PD_depths(i)];
@@ -43,8 +43,8 @@ end;
 
 figure;
 hold;
-plot(PD_depts, pq_avg + pq_std/sqrt(max(runs)));
-plot(PD_depts, pq_avg - pq_std/sqrt{max(runs)));
+plot(PD_depths, pq_avg + pq_std/sqrt(max(runs)));
+plot(PD_depths, pq_avg - pq_std/sqrt(max(runs)));
 hold;
 
 end
