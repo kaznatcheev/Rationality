@@ -40,8 +40,13 @@ end;
 
 figure;
 hold;
-plot(PD_depths, prop_coop_avg + prop_coop_std/sqrt(max(runs)));
-plot(PD_depths, prop_coop_avg - prop_coop_std/sqrt(max(runs)));
+plot(PD_depths, prop_coop_avg + prop_coop_std/sqrt(max(runs)), 'k.-');
+plot(PD_depths, prop_coop_avg, 'k--');
+plot(PD_depths, prop_coop_avg - prop_coop_std/sqrt(max(runs)), 'k.-');
+axis([min(PD_depths) max(PD_depths) 0 1]);
+xlabel('c/(b - c) -- inverse of PD`s specialization coefficient');
+ylabel('Proportion of cooperative interactions');
+grid;
 hold;
 
 end

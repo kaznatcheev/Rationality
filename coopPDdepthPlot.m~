@@ -1,4 +1,4 @@
-function coopPDdepthPlot(suffix,e_val,PD_depths,runs,window)
+function [prop_coop_avg,prop_coop_std] = coopPDdepthPlot(suffix,e_val,PD_depths,runs,window)
 
 if (nargin < 5) || isempty(window),
     window = 1801:2000;
@@ -9,11 +9,11 @@ if (nargin < 4) || isempty(runs),
 end;
 
 if (nargin < 3) || isempty(PD_depths),
-    PD_depths = 0.1:0.1:1.0
+    PD_depths = 0.1:0.1:1.0;
 end;
 
-prop_coop_avg = zeros(length(PD_depth),1);
-prop_coop_std = zeros(length(PD_depth),1)
+prop_coop_avg = zeros(length(PD_depths),1);
+prop_coop_std = zeros(length(PD_depths),1);
 
 for i = 1:length(PD_depths),
     game_point = [-PD_depths(i),1 + PD_depths(i)];
@@ -38,7 +38,13 @@ for i = 1:length(PD_depths),
     prop_coop_std(i) = std(prop_coop_smooth);
 end;
 
-plot(proop_coop_avg + prop_coop_std/sqrt(max(runs))
+figure;
+hold;
+plot(PD_depths, prop_coop_avg + prop_coop_std/sqrt(max(runs)));
+plot(PD_depths, prop_coop_avg - prop_coop_std/sqrt(max(runs)));
+axis([min(PD_depths) max(PD_depths) 0 1]);
+xlabel(
+hold;
 
 end
 
