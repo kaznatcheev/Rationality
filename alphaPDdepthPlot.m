@@ -1,4 +1,4 @@
-function alphaPDdepthPlot(suffix, e_value, PD_depth, runs, window, k)
+function alphaPDdepthPlot(suffix, e_value, PD_depths, runs, window, k)
 
 if (nargin < 6) || isempty(k),
     k = 1;
@@ -12,13 +12,13 @@ if(nargin < 4) || isempty(runs),
     runs = 1:10;
 end;
 
-if(nargin < 3) || isempty(PD_depth),
-    PD_depth = 0.1:0.1:1.0;
+if(nargin < 3) || isempty(PD_depths),
+    PD_depths = 0.1:0.1:1.0;
 end;
 
-for offset = PD_depth,
+for PD_depth = PD_depths,
         %Find which folder we're opening.
-        game_point = [-offset, 1 + offset];
+        game_point = [-PD_depth, 1 + PD_depth];
         name_start = strcat('../RationalityData/U', int2str(10 * game_point(1)), 'V', int2str(10 * game_point(2)), suffix);
         
         %Create a vector to hold each run's average alpha value across the
