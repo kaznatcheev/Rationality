@@ -25,8 +25,12 @@ else
     end;
 end;
 
-if (min(pdf) < 0)
-    'We fucked up'   
+if (min(pdf) < 0),
+    'We're fucking negative'   
+end;
+
+if ~(sum(pdf) == 1),
+    'We're not fucking summing'
 end;
 
 end
