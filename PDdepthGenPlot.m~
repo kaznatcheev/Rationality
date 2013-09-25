@@ -1,8 +1,0 @@
-PDrange = 0.2:0.1:0.9;
-
-for offset = PDrange,
-    game_point = [-offset,1 + offset];
-    game_dir = strcat('../RationalityData/U', int2str(10*game_point(1)), 'V', int2str(10*game_point(2)));
-    
-    genotypes = dlmread(strcat(game_dir,'/bi',int2str(run),'/genotypes2.txt'));
-end;
