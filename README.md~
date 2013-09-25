@@ -39,15 +39,12 @@ behavior when looking at economics or biology. Finally, we argue that our framew
 foundation for combining evolution and learning since it captures the impossibility of defining an
 objective utility/fitness of memes if imitation dynamics are considered at the level of behavior.
 
-<h3>Summary</h3>
-Code for working on the objective-subjective rationality project. 
-The overall code structure is heavily borrowed from an earlier development with <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> for the parental investment project.
-
-Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.
 
 <h3>Notes</h3>
 <ul>
+<li>Some code structure is borrowed from an earlier code by <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> and Artem for the parental investment project.
 <li>We use a death-birth updating scheme, which is implemented in <i>deathBirth</i></li>
+<li>Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.</li>
 </ul>
 
 <h3>Functions</h3>
@@ -77,4 +74,6 @@ Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pund
 <li>January 31, 2013: <a href=http://egtheory.wordpress.com/2013/01/31/need-for-social/>Extra, Special Need for Social Connections</a>. Review of the various subjective factors that have been identified and studied in experimental work on human decision making in games.</li>
 <li>May 12, 2013: <a href=http://egtheory.wordpress.com/2013/05/12/quasi-magical-thinking-and-the-public-good/>Quasi-magical thinking and the public good</a>. Review of a paper by Masel (2007) concerning a public goods game. To encourage cooperation, agents use a quasi-magical thinking update scheme (consider their own potential action as a data point) when estimating how much others will contribute.</li>
 <li>May 13, 2013: <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>Quasi-magical thinking and superrationality for Bayesian agents</a>. Overview of how to implement quasi-magical thinking into the model, which biases learning so that an agent's own action is treated as a data point when estimating how others will act.</li>
+<li>May 23, 2013: <a href="http://egtheory.wordpress.com/2013/05/23/quasi-delusions-and-inequality-aversion/">Quasi-delusions and inequality aversion</a>. How to interpret a given subjective game in terms of advantageous and disadvantageous inequality aversion.
+<li>July 9, 2013: <a href="http://egtheory.wordpress.com/2013/07/09/evolving-useful-delusions-to-promote-cooperation/">Evolving useful delusions to promote cooperation</a>.  Transcript of Artem's presentation from March 27th, covering part of SWARMFEST presentation from July 9th. Presents results for distribution of minds.</li>
 </ul>

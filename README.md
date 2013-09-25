@@ -50,6 +50,7 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 <h3>Functions</h3>
 <ul>
 <li><i>batchRunConference</i> is the entry code for the CogSci 2013 conference paper we wrote. It loads a graph and then runs 'recStepRun' on it.</li>
+<li><i>batchRunAlphaConf</i> is the code we used to generate data for the SwarmFest conference. It takes (1) a PD depth, (2) whether to allow U and V values to evolve, (3) a graph to load, (4) the number of runs, (5) whether to output data, and then runs 'recStepRun'. 
 <li><i>recStepRun</i> is the main wrapper for running the simulation. The state of agents' minds and genotypes are not recorded at every time step, because this takes too much space. Rather, an array is passed (step_array) which indicates how many steps should pass before this data is recorded.</li>
 <li><i>subRat</i> is the main file for running the simulation. At each step, it calls 'playGame', potentially randomizes the world, applies an input update rule, and then collects data with 'collectData'.</li>
 <li><i>playGame</i> goes through all of the edges of the graph and simulates the interaction given that the agents use an inputted decisionRule.</li>
