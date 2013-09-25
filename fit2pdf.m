@@ -26,12 +26,10 @@ else
 end;
 
 if (min(pdf) < 0),
-    'We're fucking negative'   
+    'We are fucking negative'   
 end;
 
-if ~(sum(pdf) == 1),
-    'We're not fucking summing'
-end;
+%we might be off from a sum of 1 by a little bit due to rounding errors
 
 end
 
