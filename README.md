@@ -60,8 +60,11 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 <li><i>repLocalMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
 <li><i>repSetMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within a finte set of choices.</li>
 <li><i>saveRegRandGraph</i> is used to generate a regular random graph and save the adjacency matrix</li>
-<li><i>genoRantnit</i> created a random initial distribution of genotypes.
-<li><i>plotCoop</i> is used to make the nice proportion of cooperation plots.
+<li><i>genoRantnit</i> created a random initial distribution of genotypes.</li>
+<li><i>plotCoop</i> is used to make the nice proportion of cooperation plots.</li>
+<li><i>alphaPDdepthPlot</i> generates plots of the average alpha value (or the average number of agents using alpha, if this is binary) across PD depths.</li>
+<li><i>coopPDdepthPlot</i> generates plots of the average proportion of cooperation across PD depths.</li>
+<li><i>densityPDdepthPlot</i> generates density plots of agent UV values across PD depths.</li>
 </ul>
 
 <h3>Relevant blog posts</h3>
