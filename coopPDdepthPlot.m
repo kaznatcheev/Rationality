@@ -18,7 +18,12 @@ prop_coop_std = zeros(length(PD_depths),1);
 for i = 1:length(PD_depths),
     game_point = [-PD_depths(i),1 + PD_depths(i)];
     %reset data stores
-    data = zeros(max(window),13,max(runs));
+    if strcmp(suffix(2:3),'no'),
+        %if there is no alpha variance then only 11 columns in data
+        data = zeros(max(window),11,max(runs));
+    else
+        data = zeros(max(window),13,max(runs));
+    end;
     %read the files into data
     for run = runs,
         file_name = strcat('../RationalityData/U', int2str(10*game_point(1)), ...

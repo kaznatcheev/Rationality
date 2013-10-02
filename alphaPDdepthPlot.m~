@@ -35,15 +35,15 @@ end;
 %Plot the results.
 figure;
 hold on;
-plot(PD_depths,k*(average - std_error), 'k');
-plot(PD_depths,k*(average + std_error), 'k');
-plot(PD_depths,k*average, 'k--');
+plot(PD_depths,(average - std_error, 'k');
+plot(PD_depths,average + std_error, 'k');
+plot(PD_depths,average, 'k--');
 hold off;
 xlabel('c/(b - c) -- inverse of PD`s specialization coefficient');
 if(k == 1),
     ylabel('Average alpha');
 elseif(k == 2),
-    ylabel('Proportion of agents using alpha = 1/2');
+    ylabel('Proportion of agents using alpha');
 end;
 grid;
 axis([0 1 0 1]);
