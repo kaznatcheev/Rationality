@@ -69,15 +69,43 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 
 <h3>Relevant blog posts</h3>
 <ul>
-<li>March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. Overview of the the motivation for and basic structure of the model, where agents' subjective representation of the game they are playing deviates from the real thing.</li>
-<li>March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. The U,V game space, with graph of how it is divided up.</li>
-<li>March 29, 2012: <a href=http://egtheory.wordpress.com/2012/03/29/random-regular-graphs/>Generating random k-regular graphs</a>. Generating random k-regular graphs.</li>
-<li>October 25, 2012: <a href=http://egtheory.wordpress.com/2012/10/25/ohtsuki-nowak-transform/>Ohtsuki-Nowak transform for replicator dynamics on random graphs</a>. Converting payoff matrices so that you can derive analytic results for games played on random regular graphs.</li>
-<li>January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. Review of Davies et al. (2011), where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).</li>
-<li>January 28, 2013: <a href=http://egtheory.wordpress.com/2013/01/28/subjective-bayes/>Rationality for Bayesian agents</a>. Obtaining the MLE of a rational Bayesian agent faced with a coin toss environment, and how to make decisions on this basis.</li>
-<li>January 31, 2013: <a href=http://egtheory.wordpress.com/2013/01/31/need-for-social/>Extra, Special Need for Social Connections</a>. Review of the various subjective factors that have been identified and studied in experimental work on human decision making in games.</li>
-<li>May 12, 2013: <a href=http://egtheory.wordpress.com/2013/05/12/quasi-magical-thinking-and-the-public-good/>Quasi-magical thinking and the public good</a>. Review of a paper by Masel (2007) concerning a public goods game. To encourage cooperation, agents use a quasi-magical thinking update scheme (consider their own potential action as a data point) when estimating how much others will contribute.</li>
-<li>May 13, 2013: <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>Quasi-magical thinking and superrationality for Bayesian agents</a>. Overview of how to implement quasi-magical thinking into the model, which biases learning so that an agent's own action is treated as a data point when estimating how others will act.</li>
-<li>May 23, 2013: <a href="http://egtheory.wordpress.com/2013/05/23/quasi-delusions-and-inequality-aversion/">Quasi-delusions and inequality aversion</a>. How to interpret a given subjective game in terms of advantageous and disadvantageous inequality aversion.
-<li>July 9, 2013: <a href="http://egtheory.wordpress.com/2013/07/09/evolving-useful-delusions-to-promote-cooperation/">Evolving useful delusions to promote cooperation</a>.  Transcript of Artem's presentation from March 27th, covering part of SWARMFEST presentation from July 9th. Presents results for distribution of minds.</li>
+<li>
+  March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. 
+  Overview of the the motivation for and basic structure of the model, where agents' subjective representation of the game they are playing deviates from the real thing.
+</li><li>
+  March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. 
+  The U,V game space, with graph of how it is divided up.
+</li><li>
+  March 29, 2012: <a href=http://egtheory.wordpress.com/2012/03/29/random-regular-graphs/>Generating random k-regular graphs</a>. 
+  Generating random k-regular graphs.
+</li><li>
+  October 25, 2012: <a href=http://egtheory.wordpress.com/2012/10/25/ohtsuki-nowak-transform/>Ohtsuki-Nowak transform for replicator dynamics on random graphs</a>. 
+  Converting payoff matrices so that you can derive analytic results for games played on random regular graphs.
+</li><li>
+  January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. 
+  Review of Davies et al. (2011), where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).
+</li><li>
+  January 28, 2013: <a href=http://egtheory.wordpress.com/2013/01/28/subjective-bayes/>Rationality for Bayesian agents</a>. 
+  Obtaining the MLE of a rational Bayesian agent faced with a coin toss environment, and how to make decisions on this basis.
+</li><li>
+  January 31, 2013: <a href=http://egtheory.wordpress.com/2013/01/31/need-for-social/>Extra, Special Need for Social Connections</a>. 
+  Review of the various subjective factors that have been identified and studied in experimental work on human decision making in games.
+</li><li>
+  May 12, 2013: <a href=http://egtheory.wordpress.com/2013/05/12/quasi-magical-thinking-and-the-public-good/>Quasi-magical thinking and the public good</a>. 
+  Review of a paper by Masel (2007) concerning a public goods game. 
+  To encourage cooperation, agents use a quasi-magical thinking update scheme (consider their own potential action as a data point) when estimating how much others will contribute.
+</li><li>
+  May 13, 2013: <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>Quasi-magical thinking and superrationality for Bayesian agents</a>. 
+  Overview of how to implement quasi-magical thinking into the model, which biases learning so that an agent's own action is treated as a data point when estimating how others will act.
+</li><li>
+  May 23, 2013: <a href="http://egtheory.wordpress.com/2013/05/23/quasi-delusions-and-inequality-aversion/">Quasi-delusions and inequality aversion</a>. 
+  How to interpret a given subjective game in terms of advantageous and disadvantageous inequality aversion.
+</li><li>
+  July 9, 2013: <a href="http://egtheory.wordpress.com/2013/07/09/evolving-useful-delusions-to-promote-cooperation/">Evolving useful delusions to promote cooperation</a>.  
+  Transcript of Artem's presentation from March 27th, covering part of SWARMFEST presentation from July 9th. 
+  Presents results for distribution of minds.
+</li><li>
+  October 16, 2013: <a href="http://egtheory.wordpress.com/2013/10/16/qmt-and-su/">Cooperation through useful delusions: quasi-magical thinking and subjective utility</a>.
+  Presnets figures on how evolution of subjective utilities and self-absoprtion interact.
+</li>
 </ul>
