@@ -15,7 +15,7 @@ for run = runs,
    genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'bnov',int2str(run),'e1/genotypes2000.txt'));
 end;
     
-h = densityPlot(genotypes,[-2 2 -1 3],[],[],0,1);
+h = densityPlot(genotypes,[-2 2 -1 3],[],[],1,1);
 title('Density plot of genotypes at epoch 2000');
 
 %add blue
@@ -26,7 +26,7 @@ for run = runs,
    genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'bnov',int2str(run),'e1/genotypes2000.txt'));
 end;
 
-h = densityPlot(genotypes,[-2 2 -1 3],[],[],0,0);
+h = densityPlot(genotypes,[-2 2 -1 3],[],[],1,0);
 %title('Density plot of genotypes at epoch 2000');
 
 print(h,'-dpng',strcat('../RationalityData/images/genotypesRedBlue.png'));
