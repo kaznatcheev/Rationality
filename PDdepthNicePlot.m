@@ -12,7 +12,7 @@ game_dir = strcat('../RationalityData/U', int2str(10*gp_red(1)), 'V', int2str(10
 
 genotypes = zeros(500*length(runs),2);
 for run = runs,
-   genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'/bv',int2str(run),'/genotypes2000.txt'));
+   genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'bnov',int2str(run),'e1/genotypes2000.txt'));
 end;
     
 h = densityPlot(genotypes,[-2 2 -1 3],[],[],0,1);
@@ -23,7 +23,7 @@ game_dir = strcat('../RationalityData/U', int2str(10*gp_blue(1)), 'V', int2str(1
 
 genotypes = zeros(500*length(runs),2);
 for run = runs,
-   genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'/bv',int2str(run),'/genotypes2000.txt'));
+   genotypes(((run - 1)*500 + 1):(run*500),:) = dlmread(strcat(game_dir,'bnov',int2str(run),'e1/genotypes2000.txt'));
 end;
 
 h = densityPlot(genotypes,[-2 2 -1 3],[],[],0,0);
