@@ -45,6 +45,13 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 <li>Some code structure is borrowed from an earlier code by <a href=http://home.uchicago.edu/kjbrown/>Kyler Brown</a> and Artem for the parental investment project.
 <li>We use a death-birth updating scheme, which is implemented in <i>deathBirth</i></li>
 <li>Code for regular Random Graph generation (createRandRegGraph.m) is by Golan Pundak and available <a href=http://www.mathworks.com/matlabcentral/fileexchange/29786-random-regular-generator/content/randRegGraph/createRandRegGraph.m>here</a>.</li>
+<li>The current convention for storing data in '../RationalityData/' is 'U' + X + 'V' + Y + 'b' + s + f +  v + 'e' + b where:</ul>
+<li>[X,Y] is the game,</li> 
+<li>s = <i>no</i>, <i>2</i>, or <i>all</i> corresponding to if we allow no-alpha, or no-alpha and quasi-magical thinking, or all alpha from 0 to 1 respectively,</li>
+<li>f = <i>i</i> or <i>v</i> depending on if the simulation is inviscid or viscous,</li>
+<li>v is an integer corresponding the run number, and</li>
+<li>b is a flag if evolution of internal representations is turned off (0) or on (1)</li>
+</ul></li>
 </ul>
 
 <h3>Functions</h3>
