@@ -25,6 +25,8 @@ C = {xi, yi};
 
 if new_fig,
     h = figure;
+else,
+    h = gcf;
 end;
 
 z = hist3(data(:,1:2),C);
