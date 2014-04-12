@@ -78,41 +78,68 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 <ul>
 <li>
   March 8, 2012: <a href=http://egtheory.wordpress.com/2012/03/08/objective-subjective/>Objective and subjective rationality</a>. 
-  Overview of the the motivation for and basic structure of the model, where agents' subjective representation of the game they are playing deviates from the real thing.
+  Most work on the interaction of learning and evolution assumes that the representations learning acts on accurately reflect the same reality that generates fitness. 
+  I question this assumption and introduce the general outline for a model that seperates subjective representations of the inter-agent interaction from their objective fitness effects.
 </li><li>
   March 14, 2012: <a href=http://egtheory.wordpress.com/2012/03/14/uv-space/>Space of cooperate-defect games</a>. 
-  The U,V game space, with graph of how it is divided up.
+  By removing additive constants and renormalizing, it is possible to represent the payoffs of any two strategy two player cooperate-defect game with just two parameters U and V. 
+  We can plot these parameters to visualize the U-V space of possible qualitatively distinct games.
+</li><li>
+  March 21, 2012: <a href="http://egtheory.wordpress.com/2012/03/21/spatial-structure/">Spatial structure</a>.
+  Agents in evolution games seldom inhabit a purely mixed environment where they are equally likely to interact with any other agent.
+  In a more general settings, you have to consider settings where agents only interact with a specific subset of other agents.
+  This interaction structure can be represented as a network or graph, and the choice of graph which agents inhabit is very important for the resulting evolutionary dynamics.
 </li><li>
   March 29, 2012: <a href=http://egtheory.wordpress.com/2012/03/29/random-regular-graphs/>Generating random k-regular graphs</a>. 
-  Generating random k-regular graphs.
+  One of the simplest structured environments are the random k-regular graphs.
+  Being simple to describe, however, does not mean that they are easy to generate, so Marcel discusses some methods for creating these graphs.
 </li><li>
   October 25, 2012: <a href=http://egtheory.wordpress.com/2012/10/25/ohtsuki-nowak-transform/>Ohtsuki-Nowak transform for replicator dynamics on random graphs</a>. 
-  Converting payoff matrices so that you can derive analytic results for games played on random regular graphs.
+  One of the biggest advantages of studying dynamics on random regular graphs, is that there exists a tool for solving their dynamics analytically. 
+  The Ohtsuki-Nowak transform allows you to perturb the game's payoff matrix to incorporate the spatial structure and then study the modified game as if it was governed by inviscid replicator dynamics. 
 </li><li>
   January 23, 2013: <a href=http://egtheory.wordpress.com/2013/01/23/habitual-rationality/>Habitual selfish agents and rationality</a>. 
-  Review of Davies et al. (2011), where they consider a coordination/anti-coordination game. To maximize global rather than local utility, they change their agents' utility function from an objective to a subjective one, so that it includes habituation (preferring to be paired with those you were paired with previously).
+  Marcel reviews Davies et al. (2011), where the authors consider a coordination/anti-coordination game. 
+  To maximize global rather than local utility, the authors change their agents' utility function from an objective to a subjective one, so that it includes habituation: i.e. referring to be paired with those you were paired with previously.
 </li><li>
   January 28, 2013: <a href=http://egtheory.wordpress.com/2013/01/28/subjective-bayes/>Rationality for Bayesian agents</a>. 
-  Obtaining the MLE of a rational Bayesian agent faced with a coin toss environment, and how to make decisions on this basis.
+  I derive the maximum likelihood estimator for a rational Bayesian agent faced with a coin toss environment. 
+  This allows the agent to make decisions when the rational choice is not the unique pure strategy of cooperation nor defection.
 </li><li>
   January 31, 2013: <a href=http://egtheory.wordpress.com/2013/01/31/need-for-social/>Extra, Special Need for Social Connections</a>. 
-  Review of the various subjective factors that have been identified and studied in experimental work on human decision making in games.
+  Tom provides a review of the various subjective factors that have been identified and studied in experimental work on human decision making in games based on Lee (2008).
 </li><li>
   May 12, 2013: <a href=http://egtheory.wordpress.com/2013/05/12/quasi-magical-thinking-and-the-public-good/>Quasi-magical thinking and the public good</a>. 
-  Review of a paper by Masel (2007) concerning a public goods game. 
+  Marcel reviews Masel's (2007) work on quasi-magical thinking in the public goods game. 
   To encourage cooperation, agents use a quasi-magical thinking update scheme (consider their own potential action as a data point) when estimating how much others will contribute.
 </li><li>
   May 13, 2013: <a href=http://egtheory.wordpress.com/2013/05/13/quasi-magical-thinking-and-superrational-bayesian/>Quasi-magical thinking and superrationality for Bayesian agents</a>. 
-  Overview of how to implement quasi-magical thinking into the model, which biases learning so that an agent's own action is treated as a data point when estimating how others will act.
+  Quasi-magical thinking can be implemented in the subjective-objective rationality model by biasing the learning of others reactions so that an agent's own action is treated as a data point when estimating how others will act.
+  The strength of this bias can be varied by changing the weight an agent gives to their own action.
+  In the extreme case of assigning full weight to your own action and none to the partner, the result is Hofstadter’s superrationality.
 </li><li>
   May 23, 2013: <a href="http://egtheory.wordpress.com/2013/05/23/quasi-delusions-and-inequality-aversion/">Quasi-delusions and inequality aversion</a>. 
-  How to interpret a given subjective game in terms of advantageous and disadvantageous inequality aversion.
+  Inequality aversion is a common bias believed to facilitate cooperation.
+  Subjective rationality can be represented in terms of this bias and its interaction with objective reality can be understood in the broader framework of quasi-delusions.
 </li><li>
   July 9, 2013: <a href="http://egtheory.wordpress.com/2013/07/09/evolving-useful-delusions-to-promote-cooperation/">Evolving useful delusions to promote cooperation</a>.  
-  Transcript of Artem's presentation from March 27th, covering part of SWARMFEST presentation from July 9th. 
-  Presents results for distribution of minds.
+  Transcript of my presentation from March 27th, also covering part of SWARMFEST presentation from July 9th. 
+  I outline the subjective-objective rationality model and present results on the distribution of agent's subjective utilities.
+  In highly competitive environments, agents evolve faithful representations of reality that lead them to defection.
+  In less competitive but still Prisoner's dilemma environments, cooperation emerges from agents misrepresenting the objection payoff of the game.
 </li><li>
   October 16, 2013: <a href="http://egtheory.wordpress.com/2013/10/16/qmt-and-su/">Cooperation through useful delusions: quasi-magical thinking and subjective utility</a>.
-  Presnets figures on how evolution of subjective utilities and self-absoprtion interact.
+  A discussion and some results on how quasi-magical thinking and subjective rationality interact.
+  Evolutionary control over subjective representations results in higher levels of cooperation than control over quasi-magical thinking.
+  Althought allowing for both misrepresentations and quasi-magical thinking to exist together allows for more genotypic flexibility, the resulting dynamics lead to lower levels of cooperation.
+</li><li>
+  October 20, 2013: <a href="http://egtheory.wordpress.com/2013/10/20/enriching-egt/">Enriching evolutionary games with trust and trustworthiness</a>.
+  Tom discusses McNamara's (2013) suggestion for incorporating richer decision making procedures and phenotypic effects into evolutionary game theoretic models.
+  He draws special attention to models that incorporate truth and trusthworthiness, contrasting them with more common studied reputation effects.
+</li><li>
+  January 28, 2014: <a href="http://egtheory.wordpress.com/2014/01/28/interface-theory-of-perception/">Interface theory of perception can overcome the rationality fetish</a>.
+  Hoffman's interface theory of perception questions the assumption that our perception fautfully reflects reality.
+  Evolution does not select for the most accurate perception but for the most useful, so perception instead tunes itself to fitness.
+  Mark, Marion, & Hoffman (2010) demonstrate this with a simple evolutionary model of resource spot selection, and I discuss how the subjective-objective rationality model can provide even further insights.
 </li>
 </ul>
