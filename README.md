@@ -141,5 +141,8 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
   Hoffman's interface theory of perception questions the assumption that our perception fautfully reflects reality.
   Evolution does not select for the most accurate perception but for the most useful, so perception instead tunes itself to fitness.
   Mark, Marion, & Hoffman (2010) demonstrate this with a simple evolutionary model of resource spot selection, and I discuss how the subjective-objective rationality model can provide even further insights.
+</li><li>
+  May 4, 2014: <a href="http://egtheory.wordpress.com/2014/05/04/useful-delusions-interface-theory-of-perception-and-religion/">Useful delusions, interface theory of perception, and religion</a>.
+  An explanation of how our model is a social extentsion of Hoffman's interface theory of perception, and a discussion of religion as a potential domain of application.
 </li>
 </ul>
