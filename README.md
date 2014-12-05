@@ -144,5 +144,15 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 </li><li>
   May 4, 2014: <a href="http://egtheory.wordpress.com/2014/05/04/useful-delusions-interface-theory-of-perception-and-religion/">Useful delusions, interface theory of perception, and religion</a>.
   An explanation of how our model is a social extentsion of Hoffman's interface theory of perception, and a discussion of religion as a potential domain of application.
+</li><li>
+  November 1, 2014: <a href="https://egtheory.wordpress.com/2014/11/01/real-to-interface/">From realism to interfaces and rationality in evolutionary games</a>.
+  A non-technical overview of the distinction between naive realism, critical realism, and interface theories of perception.
+  I discuss Mark et al.'s (2010) evolutionary justification for interface theories, and how our work extends this to social interfaces.
+</li><li>
+  November 30, 2014: <a href="https://egtheory.wordpress.com/2014/11/30/interface-philosophy/">Realism and interfaces in philosophy of mind and metaphysics</a>.
+  The distinction between naive realism, critical realism, and interfaces is of interest to more than just students of perception, it has a rich philosophical history.
+  Various kinds of materialist realisms can be associated with Epicurus and Bertrand Russell, and a non-material critical realism with Plato.
+  Interface theories can be traced back to Parmenides, and are well developed by medieval Muslim thinkers like Averroes, Ibn Arabi, and Rumi.
+  The best modern treatment of interfaces was given by Kant, and we can apply it to better understand Bohr's interpretation of quantum mechanics.
 </li>
 </ul>
