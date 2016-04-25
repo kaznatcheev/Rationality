@@ -21,7 +21,21 @@ decisionRule = @(genotype,mind) ratShaky(genotype, mind, epsilon);
 
 %read the graph
 adjmx = dlmread(graph_location);
-n_agents = size(adjmx,1);
+n_agents = size(adjmx,1) %don't supress output
+
+n_edges = sum(sum(adjmx));
+avg_deg = n_edges/n_agents %don't supress output
+
+%create random comparison graph
+if mod(n_agents*round(avg_deg),2) 
+	%if odd then can't make regular graph, so make the closest we can
+	big_rand = full(createRandRegGraph(n_agents + 1, round(avg_deg)));
+
+	%throw away one row
+	adjmx_rand = big_rand(1:n_agents,1:n_agents);
+else
+	adjmx_rand = full(createRandRegGraph(n_agents, round(avg_deg)));
+end
 
 %create the initial genotypes and empty minds
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
@@ -34,17 +48,26 @@ game = [1, -PD_depth; 1 + PD_depth, 0];
 reproduce = @(genotype) repLocalMutate(genotype, mutation_rate, ...
         mutation_size, boundaries, alpha_mut_rate, alpha_values);
 
+%run the main graph
 t = tic;
 [d_rr,g_rr,m_rr] = subRat(adjmx,genotypes,minds,game,[],@deathBirth, ...
 	max_epoch,p_death,reproduce, decisionRule,p_shuffle);
 toc(t);
 
+%run the comparison graph
+t = tic;
+[d_c,g_c,m_c] = subRat(adjmx_rand,genotypes,minds,game,[],@deathBirth, ...
+	max_epoch,p_death,reproduce, decisionRule,p_shuffle);
+toc(t);
+
 %Calculate the proportion of interactions that are cooperations.
 prop_coop_rr = (2*d_rr(:,1) + d_rr(:,2))./(2*(d_rr(:,1) + d_rr(:,2) + d_rr(:,3)));
+prop_coop_c = (2*d_c(:,1) + d_c(:,2))./(2*(d_c(:,1) + d_c(:,2) + d_c(:,3)));
 
 %Plot the proportion of interactions that are cooperations.
 plot(prop_coop_rr, 'b');
 hold on
+plot(prop_coop_c, 'r') %comparison graph in red
 fplot(@(x) 1 - epsilon, [0 max_epoch], 'k--');
 fplot(@(x) epsilon, [0 max_epoch], 'k--');
 axis([0, max_epoch, 0, 1]);
