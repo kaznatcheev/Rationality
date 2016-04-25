@@ -30,12 +30,12 @@ for PD_depth = [0.05,0.1,0.15,0.20,0.25,0.3]
     	%no Bayes viscous Hadza Male
     	t = tic;
     	recStepRun(graph_loc_M,strcat(game_dir, '/nv_M', int2str(run)), ...
-    	    steps,game_point,0.1,0.05,0,0.1,0,0;
+    	    steps,game_point,0.1,0.05,0,0.1,0,0);
     	toc(t);
     	%no Bayes viscous on random regular graph like Hadza Male
     	t = tic;
     	recStepRun(graph_loc_Mr,strcat(game_dir, '/nv_Mr', int2str(run)), ...
-    	    steps,game_point,0.1,0.05,0,0.1,0,0;
+    	    steps,game_point,0.1,0.05,0,0.1,0,0);
     	toc(t);
 	end;
 end;
