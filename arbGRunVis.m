@@ -27,15 +27,7 @@ n_edges = sum(sum(adjmx));
 avg_deg = n_edges/n_agents %don't supress output
 
 %create random comparison graph
-if mod(n_agents*round(avg_deg),2) 
-	%if odd then can't make regular graph, so make the closest we can
-	big_rand = full(createRandRegGraph(n_agents + 1, round(avg_deg)));
-
-	%throw away one row
-	adjmx_rand = big_rand(1:n_agents,1:n_agents);
-else
-	adjmx_rand = full(createRandRegGraph(n_agents, round(avg_deg)));
-end
+adjmx_rand = cleanCreateRRG(n_agents,avg_deg);
 
 %create the initial genotypes and empty minds
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);

@@ -1,6 +1,6 @@
 function [minds, fitnesses, interactions] = playGame(edge_list, genotypes, minds, game, decisionRule)
-%playGame(adjmx, genotypes, minds, base_fitnesses, game)
-%	Agents given by (genotypes,minds) populate the vertices of the graphs given by (adjmx) and
+%playGame(edge_list, genotypes, minds, base_fitnesses, game)
+%	Agents given by (genotypes,minds) populate the vertices of the graphs given by (edge_list) and
 %	play (game) between each other to determine (fitnesses) and update (minds).
 %   (decision) is a function (genotype,mind --> strat) that decides if the
 %   agent will cooperate or defect.
