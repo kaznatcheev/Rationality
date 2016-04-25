@@ -6,7 +6,7 @@ function pdf = fit2pdf( fitnesses, w)
 
 
 if (nargin < 2) || isempty(w), %set the default w
-    if ~sum(fitnesses < 0), %if all fitnesses are non-zero then inf-w
+    if sum(fitnesses < 0) == 0, %if all fitnesses are non-negative then inf-w
         if sum(fitnesses) == 0,
             pdf = (fitnesses + 1)/length(fitnesses);
         else
@@ -14,7 +14,12 @@ if (nargin < 2) || isempty(w), %set the default w
         end;
     else
         w = 1/abs(min(fitnesses));
-        pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
+        if (length(fitnesses) + w*sum(fitnesses)) > 0,
+            pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
+        else
+            %this case triggers if all fitnesses are same and negative.
+            pdf = ones(length(fitnesses),1)/length(fitnesses);
+        end;
     end;   
 else
     if (length(fitnesses) + w*sum(fitnesses)) > 0,
