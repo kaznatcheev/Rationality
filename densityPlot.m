@@ -29,7 +29,7 @@ else,
     h = gcf;
 end;
 
-z = hist3(data(:,1:2),C);
+z = hist3(data(:,1:2),C); %hist3 needs in Octave packages: io, statistics
 pcolor(fliplr(xi),fliplr(yi),z);
 if c_bar,
     colorbar;

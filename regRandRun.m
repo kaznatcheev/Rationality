@@ -51,8 +51,10 @@ if (nargin < 6) || isempty(game),
     game = [1, -1 ; 2, 0];
 end;
 
+%create the graph
 adjmx = full(createRandRegGraph(n_agents, degree));
 
+%create the initial genotypes
 genotypes = genoRandInit(n_agents,boundaries,alpha_values);
 
 minds = zeros(n_agents, 4);

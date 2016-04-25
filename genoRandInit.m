@@ -2,7 +2,7 @@ function genotypes = genoRandInit(n_agents,boundaries,alpha_values)
 %creates an initial seed of random genotypes.
 
 if (length(alpha_values) == 1),
-    if (alpha_values == 0),
+    if (alpha_values == 0), %no alpha values
         genotypes = rand(n_agents, 2);
     else %alpha with mutation size
         genotypes = rand(n_agents, 3);

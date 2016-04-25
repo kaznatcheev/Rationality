@@ -67,7 +67,7 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
 <li><i>repLocalMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within [U +- mutation_size] and [V +- mutation_size].</li>
 <li><i>repSetMutate</i> is a (reproduce) that mutates U,V with probability mutation_rate within a finte set of choices.</li>
 <li><i>saveRegRandGraph</i> is used to generate a regular random graph and save the adjacency matrix</li>
-<li><i>genoRantnit</i> created a random initial distribution of genotypes.</li>
+<li><i>genoRandInit</i> created a random initial distribution of genotypes.</li>
 <li><i>plotCoop</i> is used to make the nice proportion of cooperation plots.</li>
 <li><i>alphaPDdepthPlot</i> generates plots of the average alpha value (or the average number of agents using alpha, if this is binary) across PD depths.</li>
 <li><i>coopPDdepthPlot</i> generates plots of the average proportion of cooperation across PD depths.</li>
@@ -154,5 +154,8 @@ objective utility/fitness of memes if imitation dynamics are considered at the l
   Various kinds of materialist realisms can be associated with Epicurus and Bertrand Russell, and a non-material critical realism with Plato.
   Interface theories can be traced back to Parmenides, and are well developed by medieval Muslim thinkers like Averroes, Ibn Arabi, and Rumi.
   The best modern treatment of interfaces was given by Kant, and we can apply it to better understand Bohr's interpretation of quantum mechanics.
+</li><li>
+February 4, 2016: <a href="https://egtheory.wordpress.com/2016/02/04/hadza/">Hadza hunter-gatherers, social networks, and models of cooperation</a>.
+I review the Apicella et al. (2012) study of Hadza social networks, and how to convert them for use as graphs in simulations like this one.
 </li>
 </ul>
