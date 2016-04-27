@@ -1,4 +1,17 @@
-function [prop_coop_avg,prop_coop_std] = coopPDdepthPlot(suffix,e_val,PD_depths,runs,window)
+function [prop_coop_avg,prop_coop_std] = coopPDdepthPlot(suffix,e_val,PD_depths,runs,window,gp_name_factor,data_length)
+
+if (nargin < 7) || isempty(data_length),
+    if strcmp(suffix(2:3),'no'),
+        %if there is no alpha variance then only 11 columns in data
+        data_length = 11;
+    else
+        data_length = 13;
+    end;
+end;
+
+if (nargin < 6) || isempty(gp_name_factor),
+    gp_name_factor = 10;
+end;
 
 if (nargin < 5) || isempty(window),
     window = 1801:2000;
@@ -18,18 +31,20 @@ prop_coop_std = zeros(length(PD_depths),1);
 for i = 1:length(PD_depths),
     game_point = [-PD_depths(i),1 + PD_depths(i)];
     %reset data stores
-    if strcmp(suffix(2:3),'no'),
-        %if there is no alpha variance then only 11 columns in data
-        data = zeros(max(window),11,max(runs));
-    else
-        data = zeros(max(window),13,max(runs));
-    end;
+    data = zeros(max(window),data_length,max(runs));
+
     %read the files into data
     for run = runs,
-        file_name = strcat('../RationalityData/U', int2str(10*game_point(1)), ...
-            'V', int2str(10*game_point(2)), suffix, int2str(run), 'e', ...
-            int2str(e_val), '/data.txt');
-         data(:,:,run) = dlmread(file_name);
+        %generate file name
+        file_name = strcat('../RationalityData/', ...
+            'U', int2str(gp_name_factor*game_point(1)), ...
+            'V', int2str(gp_name_factor*game_point(2)), suffix, int2str(run));
+        if ~isempty(e_val),
+            file_name = strcat(file_name, 'e', int2str(e_val));
+        end;
+        file_name = strcat(file_name, '/data.txt');
+
+         data(:,:,run) = dlmread(file_name); %read data
     end;
     
     %reset prop_coop stores
@@ -55,4 +70,3 @@ grid;
 hold;
 
 end
-
