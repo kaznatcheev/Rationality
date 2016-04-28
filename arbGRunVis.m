@@ -23,7 +23,7 @@ decisionRule = @(genotype,mind) ratShaky(genotype, mind, epsilon);
 adjmx = dlmread(graph_location);
 n_agents = size(adjmx,1) %don't supress output
 
-n_edges = sum(sum(adjmx));
+n_edges = sum(sum(adjmx))/2; %symmetric edges double count
 avg_deg = n_edges/n_agents %don't supress output
 
 %create random comparison graph
